@@ -32,7 +32,11 @@ public class BaseController : MonoBehaviour
     protected virtual void Update()
     {
         HandleAction();
-        Rotate(movementDirection);
+
+        if (movementDirection != Vector2.zero)
+        {
+            Rotate(movementDirection);
+        }
     }
 
     protected virtual void FixedUpdate()
@@ -63,7 +67,7 @@ public class BaseController : MonoBehaviour
 
     private void Rotate(Vector2 direction)
     {
-        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
 
         transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
 
