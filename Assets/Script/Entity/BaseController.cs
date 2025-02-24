@@ -19,9 +19,12 @@ public class BaseController : MonoBehaviour
     private Vector2 knockback = Vector2.zero;
     private float knockbackDuration = 0f;
 
+    //protected AnimationHandler animationHandler;
+
     protected virtual void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        //animationHandler = GetComponent<AnimationHandler>();
     }
 
     protected virtual void Start()
@@ -68,12 +71,15 @@ public class BaseController : MonoBehaviour
     private void Rotate(Vector2 direction)
     {
         float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
+        float t = 10f;
 
-        transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+        transform.rotation = Quaternion.Lerp(
+            transform.rotation, Quaternion.Euler(0,0,rotZ), Time.deltaTime * t);
 
         if (weaponPivot != null)
         {
-            weaponPivot.rotation = Quaternion.Euler(0f, 0f, rotZ);
+            weaponPivot.rotation = Quaternion.Lerp(
+                weaponPivot.rotation, Quaternion.Euler(0, 0, rotZ), Time.deltaTime * t);
         }
     }
 
