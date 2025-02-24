@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponHandler : MonoBehaviour
+public abstract class WeaponHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string weaponName;
+    public float damage;
+    public float attackSpeed;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public abstract void Attack();
 }
