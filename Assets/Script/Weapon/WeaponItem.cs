@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class WeaponItem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]private Skill weaponSkill;
 
-    // Update is called once per frame
-    void Update()
+    public virtual void ApplyEffect(SkillManager skilManager)
     {
-        
+        skilManager.AddSkill(weaponSkill);
     }
 }
