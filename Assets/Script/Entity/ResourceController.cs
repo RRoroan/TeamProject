@@ -2,17 +2,66 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript4 : MonoBehaviour
+public class ResourceController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField] private float healthChangeDelay = .5f;
+
+    //private BaseController baseController;
+    private StatHandler statHandler;
+    //private AnimationHandler animationHandler;
+
+    private float timeSinceLastChange = float.MaxValue;
+
+    public float CurrentHealth { get; private set; } //현재 체력 수치
+    public float MaxHealth => statHandler.Health;
+
+    private void Awake()//이 파일이 실했됐다면 컴포넌트의 데이터를 가져오겠다.
     {
-        
+        statHandler = GetComponent<StatHandler>();
+        //animationHandler = GetComponent<AnimationHandler>();
+        //baseController = GetComponent<BaseController>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()//이후 업데이트되며 피격상태의 무적시간을 체크한다.
     {
-        
+        if (timeSinceLastChange < healthChangeDelay)//체력 변경의 딜레이가 더 많을땐
+        {
+            timeSinceLastChange += Time.deltaTime; //
+            if (timeSinceLastChange >= healthChangeDelay)
+            {
+                //animationHandler.InvincibilityEnd();
+            }
+        }
+    }
+    public bool ChangeHealth(float change) //체력 변경 피해 받을때 불러올 메서드
+    {
+        if (change == 0 || timeSinceLastChange < healthChangeDelay)
+        {
+            return false;
+        }
+
+        timeSinceLastChange = 0f;
+        CurrentHealth += change;
+        CurrentHealth = CurrentHealth > MaxHealth ? MaxHealth : CurrentHealth;
+        CurrentHealth = CurrentHealth < 0 ? 0 : CurrentHealth;
+
+        if (change < 0) // 애니메이션쪽에 정의된 메서드를 불러와 작동시키기
+        {
+            //animationHandler.Damage();
+
+        }
+
+        if (CurrentHealth <= 0f)
+        {
+            Death();
+        }
+
+        return true;
+    }
+
+    private void Death() // 위에서 보이듯 죽으면 베이스 컨트롤의 데스를 불러옴
+    {
+        //baseController.Death();
     }
 }
