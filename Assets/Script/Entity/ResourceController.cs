@@ -7,9 +7,9 @@ public class ResourceController : MonoBehaviour
 
     [SerializeField] private float healthChangeDelay = .5f;
 
-    //private BaseController baseController;
+    private BaseController baseController;
     private StatHandler statHandler;
-    //private AnimationHandler animationHandler;
+    private AnimationHandler animationHandler;
 
     private float timeSinceLastChange = float.MaxValue;
 
@@ -19,8 +19,8 @@ public class ResourceController : MonoBehaviour
     private void Awake()//이 파일이 실했됐다면 컴포넌트의 데이터를 가져오겠다.
     {
         statHandler = GetComponent<StatHandler>();
-        //animationHandler = GetComponent<AnimationHandler>();
-        //baseController = GetComponent<BaseController>();
+        animationHandler = GetComponent<AnimationHandler>();
+        baseController = GetComponent<BaseController>();
     }
 
     private void Update()//이후 업데이트되며 피격상태의 무적시간을 체크한다.
@@ -30,7 +30,7 @@ public class ResourceController : MonoBehaviour
             timeSinceLastChange += Time.deltaTime; //
             if (timeSinceLastChange >= healthChangeDelay)
             {
-                //animationHandler.InvincibilityEnd();
+                animationHandler.InvincibilityEnd();
             }
         }
     }
@@ -48,7 +48,7 @@ public class ResourceController : MonoBehaviour
 
         if (change < 0) // 애니메이션쪽에 정의된 메서드를 불러와 작동시키기
         {
-            //animationHandler.Damage();
+            animationHandler.Damage();
 
         }
 
