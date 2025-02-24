@@ -7,7 +7,7 @@ public class BaseController : MonoBehaviour
 {
     protected Rigidbody2D _rigidbody;
 
-    [SerializeField] private SpriteRenderer characterRanderer;
+    [SerializeField] private SpriteRenderer characterRenderer;
     [SerializeField] private Transform weaponPivot;
 
     protected Vector2 movementDirection = Vector2.zero;
@@ -22,11 +22,25 @@ public class BaseController : MonoBehaviour
     protected AnimationHandler animationHandler;
     protected StatHandler statHandler;
 
+    [SerializeField] public WeaponHandler WeaponPrefab;
+    public WeaponHandler weaponHandler;
+
+    private float timeSinceLastAttack = float.MaxValue;
+
     protected virtual void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         animationHandler = GetComponent<AnimationHandler>();
         statHandler = GetComponent<StatHandler>();
+
+        if (WeaponPrefab != null)
+        {
+            weaponHandler = Instantiate(WeaponPrefab, weaponPivot);
+        }
+        else
+        {
+            weaponHandler = GetComponentInChildren<WeaponHandler>();
+        }
     }
 
     protected virtual void Start()
@@ -42,6 +56,8 @@ public class BaseController : MonoBehaviour
         {
             Rotate(movementDirection);
         }
+
+        HandleAttackDelay();
     }
 
     protected virtual void FixedUpdate()
@@ -90,5 +106,29 @@ public class BaseController : MonoBehaviour
     {
         knockbackDuration = duration;
         knockback = -(other.position - transform.position).normalized * power;
+    }
+
+    private void HandleAttackDelay()
+    {
+        if (weaponHandler == null) return;
+
+        if (timeSinceLastAttack <= weaponHandler.Delay)
+        {
+            timeSinceLastAttack += Time.deltaTime;
+        }
+
+        if (timeSinceLastAttack > weaponHandler.Delay && movementDirection == Vector2.zero)
+        {
+            timeSinceLastAttack = 0;
+            Attack();
+        }
+    }
+
+    protected virtual void Attack()
+    {
+        if (movementDirection == Vector2.zero)
+        {
+            weaponHandler.Attack();
+        }
     }
 }
