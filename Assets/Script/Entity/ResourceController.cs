@@ -14,6 +14,11 @@ public class ResourceController : MonoBehaviour
     private float timeSinceLastChange = float.MaxValue;
 
     public float CurrentHealth { get; private set; } //현재 체력 수치
+    public float CurrentSpeed { get; private set; } //현재 속도 수치
+    public float CurrentRange { get; private set; } //현재 사거리 수치
+    public float CurrentAttackSpeed { get; private set; } //현재 공격속도 수치
+    public float CurrentArmor { get; private set; } //현재 방어력 수치
+    public int CurrentProjectileCount { get; private set; } //현재 탄수 수치
     public float MaxHealth => statHandler.Health;
 
     private void Awake()//이 파일이 실했됐다면 컴포넌트의 데이터를 가져오겠다.
@@ -52,7 +57,7 @@ public class ResourceController : MonoBehaviour
 
         }
 
-        if (CurrentHealth <= 0f)
+        if (CurrentHealth <= 0f) // 너 죽어있잖아. 현재 체력이 0보다 낮아짐
         {
             Death();
         }
@@ -63,5 +68,37 @@ public class ResourceController : MonoBehaviour
     private void Death() // 위에서 보이듯 죽으면 베이스 컨트롤의 데스를 불러옴
     {
         //baseController.Death();
+    }
+
+    public void ChangeRange(float change)
+    {
+        if (change > 0)
+            CurrentRange += change;
+        else
+            CurrentRange -= 0f;
+    }
+
+    public void ChangeSpeed(float change)
+    {
+        if (change > 0)
+            CurrentSpeed += change;
+        else
+            CurrentSpeed -= 0f;
+    }
+
+    public void ChangeArmor(float change)
+    {
+        if (change > 0)
+            CurrentArmor += change;
+        else
+            CurrentArmor -= 0f;
+    }
+
+    public void ChangeProjectileCount(int change)
+    {
+        if (change > 0)
+            CurrentProjectileCount += change;
+        else
+            CurrentProjectileCount -= 0;
     }
 }
