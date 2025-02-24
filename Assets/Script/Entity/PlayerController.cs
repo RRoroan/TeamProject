@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : BaseController
 {
-    private Camera camera;
+    private Camera _camera;
 
     protected override void HandleAction()
     {
