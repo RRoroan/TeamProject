@@ -1,18 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class ProjectileManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private static ProjectileManager instance;
+    public static ProjectileManager Instance { get { return instance; } }
+
+    [SerializeField] private GameObject[] projectilePrefabs;
+    [SerializeField] private ParticleSystem impactParticleSystem;
+
+    private void Awake()
     {
-        
+        if (instance != null)
+        {
+            return;
+        }
+        instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ShootBullet(RangeWeaponHandler rangeWeaponHandler, Vector2 startPosition, Vector2 direction)
     {
-        
+        GameObject origin = projectilePrefabs[rangeWeaponHandler.BulletIndex];
+        GameObject obj = Instantiate(origin, startPosition, Quaternion.identity);
+
+        ProjectileController projectileController = obj.GetComponent<ProjectileController>();
+        projectileController.Init(direction, rangeWeaponHandler, this);
     }
+
+
 }
