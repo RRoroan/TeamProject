@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript5 : MonoBehaviour
+public class AnimationHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private static readonly int IsMovingL = Animator.StringToHash("isMovingL");
+    private static readonly int IsMovingR = Animator.StringToHash("isMovingR");
+    protected Animator animator;
+
+    protected void Awake()
     {
-        
+        animator = GetComponentInChildren<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Move(Vector2 obj)
     {
+        bool isMoving = obj.magnitude > .5f;
+        animator.SetBool(IsMovingL, isMoving);
+        animator.SetBool(IsMovingR, isMoving);
         
     }
 }
