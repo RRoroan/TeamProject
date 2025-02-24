@@ -9,6 +9,8 @@ public class EnemyController : BaseController
 
     [SerializeField] private float followRange = 15f;
 
+    protected bool isAttacking;
+
     public void Init(EnemyManager enemyManager, Transform target)
     {
         this.enemyManager = enemyManager;
@@ -28,7 +30,7 @@ public class EnemyController : BaseController
     {
         base.HandleAction();
 
-        if (WeaponHandler == null || target == null)
+        if (weaponHandler == null || target == null)
         {
             if (!movementDirection.Equals(Vector2.zero))
             {
@@ -48,7 +50,7 @@ public class EnemyController : BaseController
 
             if (distance <= weaponHandler.AttackRange)
             {
-                int layerMaskTarget = weaponHadler.target;
+                int layerMaskTarget = weaponHandler.target;
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, weaponHandler.AttackRange * 1.5f, (1 << LayerMask.NameToLayer("Level")) | layerMaskTarget);
 
                 if (hit.collider != null && layerMaskTarget == (layerMaskTarget | (1 << hit.collider.gameObject.layer)))

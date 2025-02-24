@@ -171,4 +171,24 @@ public class BaseController : MonoBehaviour
             weaponHandler.Attack();
         }
     }
+
+    public virtual void Death()
+    {
+        _rigidbody.velocity = Vector3.zero;
+
+        foreach (SpriteRenderer rendere in transform.GetComponentsInChildren<SpriteRenderer>())
+        {
+            Color color = rendere.color;
+            color.a = 0.3f;
+            rendere.color = color;
+        }
+
+        foreach (Behaviour component in transform.GetComponentsInChildren<Behaviour>())
+        {
+            component.enabled = false;
+        }
+
+        Destroy(gameObject, 2f);
+
+    }
 }

@@ -6,9 +6,15 @@ public class WeaponHandler : MonoBehaviour
 {
     public StatHandler statHandler;
 
+    [SerializeField] private float attackRange = 10f;
+    public float AttackRange { get => attackRange; set => attackRange = value; }
+
     public LayerMask target;
 
     private SpriteRenderer weaponRenderer;
+
+    [SerializeField] private float delay = 1f;
+    public float Delay { get => delay; set => delay = value; }
 
     [SerializeField] private int bulletIndex;
     public int BulletIndex {  get { return bulletIndex; } }
@@ -22,6 +28,8 @@ public class WeaponHandler : MonoBehaviour
     [SerializeField] private float knockbackTime = 0.5f;
     public float KnockbackTime { get => knockbackTime; set => knockbackTime = value; }
 
+    public BaseController Controller { get; private set; }
+
 
     private void Awake()
     {
@@ -29,12 +37,17 @@ public class WeaponHandler : MonoBehaviour
         statHandler = GameManager.Instance.GetStatHandler();
     }
 
+    protected virtual void Start()
+    {
+
+    }
+
     protected virtual void Update()
     {
 
     }
 
-    protected virtual void Attack()
+    public virtual void Attack()
     {
 
     }
