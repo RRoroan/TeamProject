@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangeWeaponHandler : MonoBehaviour
+public class RangeWeaponHandler : WeaponHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Transform projectileSpawnPosition;
+
+    [SerializeField] float buleetSize = 1f;
+    public float BulletSize { get => buleetSize; }
+
+    [SerializeField] private float duration;
+    public float Duration { get => duration; }
+
+    protected override void Attack()
     {
+        base.Attack();
+
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
