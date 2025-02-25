@@ -48,7 +48,7 @@ public class EnemyController : BaseController
         {
             lookDirection = direction;
 
-            if (distance <= weaponHandler.AttackRange)
+            if (distance < weaponHandler.AttackRange)
             {
                 int layerMaskTarget = weaponHandler.target;
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, weaponHandler.AttackRange * 1.5f, (1 << LayerMask.NameToLayer("Level")) | layerMaskTarget);
