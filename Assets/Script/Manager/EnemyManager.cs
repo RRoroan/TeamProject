@@ -25,6 +25,11 @@ public class EnemyManager : MonoBehaviour
 
     GameManager gameManager;
 
+    private void Start()
+    {
+        StartWave(1);
+    }
+
     public void Init(GameManager gameManager)
     {
         this.gameManager = gameManager;
