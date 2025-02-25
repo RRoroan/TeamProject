@@ -6,6 +6,14 @@ public class PlayerController : BaseController
 {
     private Camera _camera;
 
+    private GameManager gameManager;
+
+    public void Init(GameManager gameManager)
+    {
+         this.gameManager = gameManager;
+        _camera = Camera.main;
+    }
+
     protected override void HandleAction()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
