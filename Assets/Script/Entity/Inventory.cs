@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private List<string> items = new List<string>();
+
+    public bool HasItem(string itemName)
     {
-        
+        return items.Contains(itemName);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Additem(string itemName)
     {
-        
+        // items 리스트에 itemName에 해당하는 아이템이 없다면 아이템 추가
+        if (!items.Contains(itemName))
+        {
+            items.Add(itemName);
+        }
     }
+
 }
