@@ -136,7 +136,7 @@ MonoBehaviour:
   target:
     serializedVersion: 2
     m_Bits: 128
-  delay: 1
+  delay: 0.1
   bulletIndex: 0
   isOnKnockback: 0
   knockbackPower: 1
