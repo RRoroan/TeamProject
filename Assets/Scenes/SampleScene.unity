@@ -9713,6 +9713,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 6401412441340689401, guid: 9661a993d4394f1499a8286734914431, type: 3}
+  - {fileID: 3652378525465268157, guid: c1a9332ad6a27d94bbb0571c663fdd5f, type: 3}
   spawnAreas:
   - serializedVersion: 2
     x: -8
