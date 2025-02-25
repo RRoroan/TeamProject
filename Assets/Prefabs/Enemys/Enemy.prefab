@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 391497743956738411}
   - component: {fileID: 3412613146540569055}
   - component: {fileID: 104850210297330217}
+  - component: {fileID: -3374639780532092663}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -248,10 +249,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34f06b53030e2f48b2e9a5ae4a3cf89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterRenderer: {fileID: 0}
-  weaponPivot: {fileID: 0}
+  characterRenderer: {fileID: 6382017753667508728}
+  weaponPivot: {fileID: 7923122155449929466}
   WeaponPrefab: {fileID: 6767738154937878840, guid: d97a0f4f964840b47a4e8ad0ecf6a337, type: 3}
   followRange: 15
+--- !u!114 &-3374639780532092663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6401412441340689401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f09ecef899a3274389f792ac6abda3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  range: 5
+  speed: 3
+  attackspeed: 1
+  armor: 0
+  projectileCount: 1
 --- !u!1 &6837385434245735420
 GameObject:
   m_ObjectHideFlags: 0
