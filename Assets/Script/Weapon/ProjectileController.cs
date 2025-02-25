@@ -14,6 +14,7 @@ public class ProjectileController : MonoBehaviour
     private Vector2 direction;
     private bool isReady;
     private Transform pivot;
+    private int bounceCount = 0;
 
     private Rigidbody2D _rigidbody;
     private SpriteRenderer spriteRenderer;
@@ -44,27 +45,47 @@ public class ProjectileController : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Projectile"))
+    {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+            return; 
+        }
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        }
         if (levelCollisionLayer.value == (levelCollisionLayer.value | (1 << collision.gameObject.layer)))
         {
-            DestroyProjectile(collision.ClosestPoint(transform.position) - direction * .2f);
+            if (bounceCount < rangeWeaponHandler.MaxBounces)
+            {
+                Vector2 normal = collision.contacts[0].normal;
+                direction = Vector2.Reflect(direction, normal);
+
+                bounceCount++;
+            }
+            else
+            {
+                DestroyProjectile(collision.contacts[0].point - direction * .2f);
+            }
         }
         else if (rangeWeaponHandler.target.value == (rangeWeaponHandler.target.value | (1 << collision.gameObject.layer)))
         {
-            ResourceController resourceController = collision.GetComponent<ResourceController>();
+            ResourceController resourceController = collision.gameObject.GetComponent<ResourceController>();
             if (resourceController != null)
             {
                 resourceController.ChangeHealth(-5);
                 if (rangeWeaponHandler.IsOnKnockback)
                 {
-                    BaseController controller = collision.GetComponent<BaseController>();
+                    BaseController controller = collision.gameObject.GetComponent<BaseController>();
                     if (controller != null)
                     {
                         controller.ApplyKnockback(transform, rangeWeaponHandler.KnockbackPower, rangeWeaponHandler.KnockbackTime);
                     }
                 }
             }
+            DestroyProjectile(collision.contacts[0].point);
         }
     }
 
