@@ -28,6 +28,11 @@ public class ResourceController : MonoBehaviour
         baseController = GetComponent<BaseController>();
     }
 
+    private void Start()
+    {
+        CurrentHealth = statHandler.Health;
+    }
+
     private void Update()//이후 업데이트되며 피격상태의 무적시간을 체크한다.
     {
         if (timeSinceLastChange < healthChangeDelay)//체력 변경의 딜레이가 더 많을땐
