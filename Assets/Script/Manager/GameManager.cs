@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
         player = FindObjectOfType<PlayerController>();
         player.Init(this);
 
+        //statHandler = GetComponent<StatHandler>();
+
         enemyManager = GetComponentInChildren<EnemyManager>();
         enemyManager.Init(this);
 

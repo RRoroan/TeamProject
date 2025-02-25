@@ -8,10 +8,17 @@ public abstract class BaseSkill : MonoBehaviour
     public string RequiredItem;
 
     protected StatHandler statHandler;
+    protected Player player;
 
-    public void Start()
+    public void Awake()
     {
         statHandler = GameManager.Instance.GetStatHandler();
+        player = FindObjectOfType<Player>();
+    }
+
+    protected virtual void Start()
+    {
+        
     }
 
     public abstract void UseSkill();

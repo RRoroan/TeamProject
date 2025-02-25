@@ -28,7 +28,12 @@ public class SkillManager : MonoBehaviour
         Item testItemComponent = testItem.GetComponent<Item>();
         if (testItemComponent != null)
         {
-            
+            inventory.Additem(testItemComponent);
+            Debug.Log("테스트 아이템 추가 완료");
+        }
+        else
+        {
+            Debug.Log("테스트 아이템에 item컴포넌트가 없습니다.");
         }
         //
     }
@@ -41,7 +46,7 @@ public class SkillManager : MonoBehaviour
 
             foreach (BaseSkill skill in activeSkill)
             {
-                //인벤토리에 있는 아이템을 검사
+                skill.UseSkill();
             }
         }
     }
@@ -51,7 +56,15 @@ public class SkillManager : MonoBehaviour
         if (!activeSkill.Contains(skill))
         {
             activeSkill.Add(skill);
+            Debug.Log("스킬이 활성회됨");
         }
+    }
+
+    public void ResgisterSkills(Item item)
+    {
+        if (item.skill == null) return;
+
+        AddSkill(item.skill);
     }
 
 }

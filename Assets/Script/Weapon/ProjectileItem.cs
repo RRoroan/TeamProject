@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class ProjectileItem : Item
 {
-    public override void ApplyEffect(StatHandler statHandler)
-    {
-        
-    }
+
 }
