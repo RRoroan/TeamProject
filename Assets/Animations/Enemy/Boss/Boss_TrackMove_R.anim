@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: E_TrackMove_L
+  m_Name: Boss_TrackMove_R
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -25,7 +25,7 @@ AnimationClip:
     - time: 0.1
       value: {fileID: 21300000, guid: d4abc7d69265cc2409d658ef9a4491c3, type: 3}
     attribute: m_Sprite
-    path: Wheel_L
+    path: Wheel_R
     classID: 212
     script: {fileID: 0}
     flags: 2
@@ -37,7 +37,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 3239511064
+      path: 991443323
       attribute: 0
       script: {fileID: 0}
       typeID: 212
