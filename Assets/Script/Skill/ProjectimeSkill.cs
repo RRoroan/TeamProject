@@ -17,6 +17,7 @@ public class ProjectimeSkill : BaseSkill
 
     protected override void Start()
     {
+        base.Start();
         firePoint = player.transform;
     }
 

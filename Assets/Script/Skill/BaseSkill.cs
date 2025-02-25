@@ -12,13 +12,12 @@ public abstract class BaseSkill : MonoBehaviour
 
     public void Awake()
     {
-        statHandler = GameManager.Instance.GetStatHandler();
         player = FindObjectOfType<Player>();
     }
 
     protected virtual void Start()
     {
-        
+        statHandler = GameManager.Instance.GetStatHandler();
     }
 
     public abstract void UseSkill();
