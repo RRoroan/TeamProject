@@ -7,6 +7,11 @@ public class SkillManager : MonoBehaviour
     // 활성화 된 스킬 목록(먹은 아이템)
     private List<BaseSkill> activeSkill = new List<BaseSkill>();
     private Inventory inventory;
+    public Transform player; // 플레이어의 Transform
+
+    //테스트용 코드
+    public GameObject testItemPrefab;
+    //-----
 
     private void Awake()
     {
@@ -16,6 +21,16 @@ public class SkillManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(ActivateSkills());
+        //
+        GameObject testItem = Instantiate(testItemPrefab, player);
+        testItem.name = "TestProjectile";
+
+        Item testItemComponent = testItem.GetComponent<Item>();
+        if (testItemComponent != null)
+        {
+            
+        }
+        //
     }
 
     private IEnumerator ActivateSkills()
@@ -26,7 +41,7 @@ public class SkillManager : MonoBehaviour
 
             foreach (BaseSkill skill in activeSkill)
             {
-                // 인벤토리 추가 후 인벤토리에 아이템이 있을 시 스킬이 실행되게 설정
+                //인벤토리에 있는 아이템을 검사
             }
         }
     }
