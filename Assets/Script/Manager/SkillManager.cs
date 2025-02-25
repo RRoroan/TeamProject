@@ -27,6 +27,10 @@ public class SkillManager : MonoBehaviour
             foreach (BaseSkill skill in activeSkill)
             {
                 // 인벤토리 추가 후 인벤토리에 아이템이 있을 시 스킬이 실행되게 설정
+                //if (inventory.hasitem(skill.requireditem))  // 인벤토리에 해당 아이템이 있다면 실행
+                //{
+                //    skill.useskill();
+                //}
             }
         }
     }

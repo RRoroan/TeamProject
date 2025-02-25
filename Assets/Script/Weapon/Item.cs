@@ -6,6 +6,8 @@ public abstract class Item : MonoBehaviour
 {
     public string itemName;
     public string description;
+
+    
     protected StatHandler statHandler = GameManager.Instance.GetStatHandler();
     
 
