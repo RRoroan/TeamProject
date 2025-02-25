@@ -9268,6 +9268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 476842867}
   testItemPrefab: {fileID: 2308503792717330318, guid: 2c29f452bec3cd04d8500b8a044d4faa, type: 3}
+  testBoombardPrefab: {fileID: 3262911432925664456, guid: 798122e56c2a52c4084f103ce34ffead, type: 3}
 --- !u!1 &1569028358
 GameObject:
   m_ObjectHideFlags: 0
