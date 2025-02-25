@@ -131,17 +131,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statHandler: {fileID: 0}
-  attackRange: 10
+  attackRange: 5
   speed: 1
   target:
     serializedVersion: 2
     m_Bits: 64
-  delay: 0.1
+  delay: 1
   bulletIndex: 0
   isOnKnockback: 0
   knockbackPower: 1
   knockbackTime: 1
   projectileSpawnPosition: {fileID: 3459966257844306314}
+  maxBounces: 0
   buleetSize: 1
   duration: 20
   spread: 1

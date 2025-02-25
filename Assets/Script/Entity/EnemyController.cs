@@ -11,6 +11,12 @@ public class EnemyController : BaseController
 
     protected bool isAttacking;
 
+    protected override void Update()
+    {
+        HandleAction();
+        Rotate(lookDirection);
+        HandleAttackDelay();
+    }
     public void Init(EnemyManager enemyManager, Transform target)
     {
         this.enemyManager = enemyManager;
@@ -64,6 +70,12 @@ public class EnemyController : BaseController
             movementDirection = direction;
         }
 
+    }
+
+    protected override void Attack()
+    {
+        if (lookDirection != Vector2.zero)
+            weaponHandler?.Attack();
     }
 
     public override void Death()

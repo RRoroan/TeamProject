@@ -76,7 +76,7 @@ public class BaseController : MonoBehaviour
 
     }
 
-    private void Movement(Vector2 direction)
+    protected void Movement(Vector2 direction)
     {
         direction = direction * statHandler.Speed;
         if (knockbackDuration > 0f)
@@ -89,7 +89,7 @@ public class BaseController : MonoBehaviour
         animationHandler.Move(direction);
     }
 
-    private void Rotate(Vector2 direction)
+    protected void Rotate(Vector2 direction)
     {
         float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
        
@@ -113,7 +113,7 @@ public class BaseController : MonoBehaviour
         knockback = -(other.position - transform.position).normalized * power;
     }
 
-    private void HandleAttackDelay()
+    protected void HandleAttackDelay()
     {
         if (weaponHandler == null) return;
 
