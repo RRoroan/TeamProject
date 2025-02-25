@@ -9,7 +9,7 @@ public abstract class BaseSkill : MonoBehaviour
 
     protected StatHandler statHandler;
 
-    public void Awake()
+    public void Start()
     {
         statHandler = GameManager.Instance.GetStatHandler();
     }
