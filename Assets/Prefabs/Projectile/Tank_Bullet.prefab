@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelCollisionLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   fxOnDestroy: 1
 --- !u!50 &1725383109499911283
 Rigidbody2D:

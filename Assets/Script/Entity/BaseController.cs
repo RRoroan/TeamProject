@@ -26,7 +26,7 @@ public class BaseController : MonoBehaviour
 
     [SerializeField] public WeaponHandler WeaponPrefab;
     protected WeaponHandler weaponHandler;
-
+    protected bool readytoAttack;
     private float timeSinceLastAttack = float.MaxValue;
 
     protected virtual void Awake()
@@ -128,12 +128,13 @@ public class BaseController : MonoBehaviour
             Attack();
         }
     }
+    
 
     protected virtual void Attack()
     {
-        if (movementDirection == Vector2.zero)
+        if (movementDirection == Vector2.zero && readytoAttack)
         {
-            weaponHandler.Attack();
+            weaponHandler?.Attack();
         }
     }
 
