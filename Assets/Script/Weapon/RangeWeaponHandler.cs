@@ -6,8 +6,14 @@ public class RangeWeaponHandler : WeaponHandler
 {
     [Header("RangeWeapon Info")]
     [SerializeField] private Transform projectileSpawnPosition;
+    [SerializeField] private int maxBounces = 0;
+    public int MaxBounces
+    {
+        get => maxBounces;
+        set { maxBounces = Mathf.Max(0, value); }
+    }
 
-    [SerializeField] float buleetSize = 1f;
+    [SerializeField] private float buleetSize = 1f;
     public float BulletSize
     {
         get => buleetSize;

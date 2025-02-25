@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class ProjectileController : MonoBehaviour
 {
     [SerializeField] private LayerMask levelCollisionLayer;
-    [SerializeField] private int maxBounces = 1;
 
     private RangeWeaponHandler rangeWeaponHandler;
 
@@ -59,7 +58,7 @@ public class ProjectileController : MonoBehaviour
         }
         if (levelCollisionLayer.value == (levelCollisionLayer.value | (1 << collision.gameObject.layer)))
         {
-            if (bounceCount < maxBounces)
+            if (bounceCount < rangeWeaponHandler.MaxBounces)
             {
                 Vector2 normal = collision.contacts[0].normal;
                 direction = Vector2.Reflect(direction, normal);

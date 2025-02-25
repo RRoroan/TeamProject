@@ -142,6 +142,7 @@ MonoBehaviour:
   knockbackPower: 1
   knockbackTime: 1
   projectileSpawnPosition: {fileID: 3459966257844306314}
+  maxBounces: 0
   buleetSize: 1
   duration: 20
   spread: 2
