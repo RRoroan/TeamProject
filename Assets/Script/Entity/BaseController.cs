@@ -25,12 +25,9 @@ public class BaseController : MonoBehaviour
 
 
     [SerializeField] public WeaponHandler WeaponPrefab;
-    public WeaponHandler weaponHandler;
+    protected WeaponHandler weaponHandler;
 
     private float timeSinceLastAttack = float.MaxValue;
-
-    [SerializeField] private GameObject Enemy;
-
 
     protected virtual void Awake()
     {

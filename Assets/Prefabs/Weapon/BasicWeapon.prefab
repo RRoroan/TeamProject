@@ -132,6 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statHandler: {fileID: 0}
   attackRange: 10
+  speed: 0.1
   target:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -141,7 +142,7 @@ MonoBehaviour:
   knockbackPower: 0.1
   knockbackTime: 0.5
   projectileSpawnPosition: {fileID: 3459966257844306314}
-  buleetSize: 4
+  buleetSize: 1
   duration: 10
   spread: 1
   numberoProjectilesPerShot: 1

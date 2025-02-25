@@ -39,6 +39,7 @@ public class PlayerController : BaseController
             Vector2 directionToTarget = closestEnemy.transform.position - transform.position;
             Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, directionToTarget);
             weaponPivot.rotation = Quaternion.Lerp(weaponPivot.rotation, targetRotation, Time.deltaTime * 10f);
+            lookDirection = directionToTarget;
         }
 
         Debug.DrawLine(transform.position, closestEnemy.transform.position);

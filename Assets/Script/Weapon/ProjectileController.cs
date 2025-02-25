@@ -40,7 +40,7 @@ public class ProjectileController : MonoBehaviour
             DestroyProjectile(transform.position);
         }
 
-        _rigidbody.velocity = direction * rangeWeaponHandler.statHandler.GetSpeede();
+        _rigidbody.velocity = direction * rangeWeaponHandler.Speed;
 
     }
 

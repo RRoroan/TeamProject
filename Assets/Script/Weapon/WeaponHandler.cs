@@ -7,7 +7,12 @@ public class WeaponHandler : MonoBehaviour
     public StatHandler statHandler;
 
     [SerializeField] private float attackRange = 10f;
+
+    [Header("Attack Info")]
+    [SerializeField] private float speed = 1f;
+    public float Speed { get => speed; set => speed = value; }
     public float AttackRange { get => attackRange; set => attackRange = value; }
+    
 
     public LayerMask target;
 
@@ -33,6 +38,7 @@ public class WeaponHandler : MonoBehaviour
 
     private void Awake()
     {
+        Controller = GetComponentInParent<BaseController>();
         weaponRenderer = GetComponent<SpriteRenderer>();
         statHandler = GameManager.Instance.GetStatHandler();
     }

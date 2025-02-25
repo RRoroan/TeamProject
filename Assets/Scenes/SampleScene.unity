@@ -1003,7 +1003,8 @@ Transform:
   m_LocalPosition: {x: -0.1386481, y: -1.6149615, z: 0.02568663}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1230485492}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &476842864
@@ -1134,8 +1135,6 @@ MonoBehaviour:
   characterRenderer: {fileID: 1210649601}
   weaponPivot: {fileID: 1116688905}
   WeaponPrefab: {fileID: 6767738154937878840, guid: d97a0f4f964840b47a4e8ad0ecf6a337, type: 3}
-  weaponHandler: {fileID: 0}
-  Enemy: {fileID: 0}
 --- !u!114 &476842869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7975,6 +7974,53 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1230485491
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1230485492}
+  - component: {fileID: 1230485493}
+  m_Layer: 0
+  m_Name: ProjectileManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1230485492
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230485491}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.3215322, y: 1.2524881, z: -0.02289728}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 423864758}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1230485493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230485491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5247c4f7593b66408646d4ccf1a3f04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefabs:
+  - {fileID: 5824419717889186750, guid: 35a8912531c17a745b449d3071809543, type: 3}
+  impactParticleSystem: {fileID: 0}
 --- !u!1 &1465241052
 GameObject:
   m_ObjectHideFlags: 0
