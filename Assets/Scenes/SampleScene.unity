@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 84414885}
   - component: {fileID: 84414884}
   - component: {fileID: 84414883}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
