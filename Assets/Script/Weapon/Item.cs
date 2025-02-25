@@ -9,16 +9,16 @@ public abstract class Item : MonoBehaviour
     // 아이템 스킬
     public BaseSkill skill;
 
-    Player player;
+    protected Player player;
 
     protected StatHandler statHandler;
 
-    protected void Awake()
+    public void Awake()
     {
         player = FindObjectOfType<Player>();
     }
 
-    protected void Start()
+    protected virtual void Start()
     {
         statHandler = GameManager.Instance.GetStatHandler();
     }

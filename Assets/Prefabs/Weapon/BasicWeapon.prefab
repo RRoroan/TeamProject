@@ -136,7 +136,7 @@ MonoBehaviour:
   target:
     serializedVersion: 2
     m_Bits: 128
-  delay: 0.1
+  delay: 1
   bulletIndex: 0
   isOnKnockback: 0
   knockbackPower: 1
@@ -144,9 +144,9 @@ MonoBehaviour:
   projectileSpawnPosition: {fileID: 3459966257844306314}
   buleetSize: 1
   duration: 20
-  spread: 1
+  spread: 2
   numberoProjectilesPerShot: 1
-  multipleProjectileAngle: 3
+  multipleProjectileAngle: 5
   projectileColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!1 &9199430103441503841
 GameObject:
