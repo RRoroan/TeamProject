@@ -20,7 +20,7 @@ public class AnimationHandler : MonoBehaviour
         bool isMoving = obj.magnitude > .5f;
         animator.SetBool(IsMovingL, isMoving);
         animator.SetBool(IsMovingR, isMoving);
-        animator.SetBool(IsMoving, isMoving);
+        //animator.SetBool(IsMoving, isMoving);
         
     }
 
