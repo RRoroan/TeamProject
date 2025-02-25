@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class RangeWeaponHandler : WeaponHandler
 {
+    [Header("RangeWeapon Info")]
     [SerializeField] private Transform projectileSpawnPosition;
 
     [SerializeField] float buleetSize = 1f;
-    public float BulletSize { get => buleetSize; }
+    public float BulletSize
+    {
+        get => buleetSize;
+        set { buleetSize = Mathf.Max(0.5f, value); }
+
+    }
 
     [SerializeField] private float duration;
     public float Duration { get => duration; }
@@ -16,7 +22,12 @@ public class RangeWeaponHandler : WeaponHandler
     public float Spread { get => spread; }
 
     [SerializeField] private int numberoProjectilesPerShot;
-    public int NumberoProjectilesPerShot { get => numberoProjectilesPerShot; }
+    public int NumberoProjectilesPerShot
+    {
+        get => numberoProjectilesPerShot;
+        set { numberoProjectilesPerShot = Mathf.Max(1, value); }
+    }
+
 
     [SerializeField] private float multipleProjectileAngle;
     public float MultipleProjectileAngel { get => multipleProjectileAngle; }
