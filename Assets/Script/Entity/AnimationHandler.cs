@@ -6,6 +6,7 @@ public class AnimationHandler : MonoBehaviour
 {
     private static readonly int IsMovingL = Animator.StringToHash("isMovingL");
     private static readonly int IsMovingR = Animator.StringToHash("isMovingR");
+    private static readonly int IsMoving = Animator.StringToHash("isMoving");
     private static readonly int IsDamage = Animator.StringToHash("isDamage");
     protected Animator animator;
 
@@ -19,6 +20,7 @@ public class AnimationHandler : MonoBehaviour
         bool isMoving = obj.magnitude > .5f;
         animator.SetBool(IsMovingL, isMoving);
         animator.SetBool(IsMovingR, isMoving);
+        animator.SetBool(IsMoving, isMoving);
         
     }
 

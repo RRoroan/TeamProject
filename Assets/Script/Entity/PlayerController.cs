@@ -39,6 +39,15 @@ public class PlayerController : BaseController
             Vector2 directionToTarget = closestEnemy.transform.position - transform.position;
             Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, directionToTarget);
             weaponPivot.rotation = Quaternion.Lerp(weaponPivot.rotation, targetRotation, Time.deltaTime * 10f);
+            if (Quaternion.Angle(weaponPivot.rotation, targetRotation) < 10f)  // 오차 범위 1도로 설정
+            {
+                readytoAttack = true;
+            }
+            else
+            {
+                readytoAttack = false;
+            }
+            lookDirection = directionToTarget;
         }
 
         Debug.DrawLine(transform.position, closestEnemy.transform.position);
