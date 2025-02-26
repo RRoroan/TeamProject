@@ -11,6 +11,8 @@ public class MainMenuSceneController : MonoBehaviour
     public Button optionButton;
     public Button exitButton;
 
+    public GameObject blurImage;
+
     void Start()
     {
         stageSelectButton.onClick.AddListener(OnStageSelectClicked);
@@ -31,7 +33,7 @@ public class MainMenuSceneController : MonoBehaviour
 
     void OnOptionClicked()
     {
-
+        blurImage.SetActive(true);
     }
 
     void OnExitClicked()
