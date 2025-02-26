@@ -27,7 +27,7 @@ public class EnemyManager : MonoBehaviour
 
     private void Start()
     {
-        StartWave(1);
+        StartWave(4);
     }
 
     public void Init(GameManager gameManager)

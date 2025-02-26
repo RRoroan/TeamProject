@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 2769940565914394969}
   - component: {fileID: 2203055964631787987}
   m_Layer: 0
-  m_Name: E_ShotgunWeapon
+  m_Name: E_HandgunWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -167,16 +167,16 @@ MonoBehaviour:
   target:
     serializedVersion: 2
     m_Bits: 64
-  delay: 3
+  delay: 1
   bulletIndex: 0
   isOnKnockback: 0
-  knockbackPower: 3
-  knockbackTime: 3
+  knockbackPower: 1
+  knockbackTime: 1
   projectileSpawnPosition: {fileID: 2802308491905715478}
   maxBounces: 0
   buleetSize: 0.5
-  duration: 8
-  spread: 20
-  numberoProjectilesPerShot: 3
+  duration: 10
+  spread: 1
+  numberoProjectilesPerShot: 1
   multipleProjectileAngle: 1
   projectileColor: {r: 0, g: 0, b: 0, a: 0}
