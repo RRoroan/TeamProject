@@ -51,6 +51,11 @@ public class RotatingWeaponController : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        
+    }
+
     private Vector2 GetPositionAroundPlayer()
     {
         float radius = angle * Mathf.Deg2Rad;
