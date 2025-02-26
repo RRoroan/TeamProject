@@ -19,6 +19,11 @@ public class ProjectimeSkill : BaseSkill
 
     public override void UseSkill()
     {
+        if (!gameObject.activeSelf)
+        {
+            Debug.LogError($"UseSkill: {SkillName} 오브젝트가 비활성화 상태여서 실행 불가능!");
+            return;
+        }
 
         for (int i = 0; i < statHandler.GetProjectileCount(); i++)
         {

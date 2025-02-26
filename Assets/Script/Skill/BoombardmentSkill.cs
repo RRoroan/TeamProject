@@ -21,26 +21,22 @@ public class BoombardmentSkill : BaseSkill
     [SerializeField] private float lifetime = 1f;
 
 
-    private bool isColldown = false;
 
-    private Vector2 mapMinBounds;
-    private Vector2 mapMaxBounds;
+
 
     protected override void Start()
     {
         base.Start();
-        // 맵의 좌하단 좌표
-        mapMinBounds = mapSize.GetMinBounds();
-        // 맵의 우상단 좌표
-        mapMaxBounds = mapSize.GetMaxBounds();
-
-        cooldown = 15f;
     }
 
     public override void UseSkill()
     {
-        if (isColldown) return;
-        StartCoroutine(SkillCooldown());
+        if (!gameObject.activeSelf)
+        {
+            Debug.LogError($"UseSkill: {SkillName} 오브젝트가 비활성화 상태여서 실행 불가능!");
+            return;
+        }
+
         Vector2 randomPosition = RandomBoombardPosition(player.transform.position);
         GameObject boombard = Instantiate(boombardPrefabs, randomPosition, Quaternion.identity);
 
@@ -53,14 +49,22 @@ public class BoombardmentSkill : BaseSkill
     private Vector2 RandomBoombardPosition(Vector2 playerPosition)
     {
         Vector2 targetPosition;
+        int maxAttempts = 100; //반복횟수에 제한을 걸기
+        int attempts = 0;
 
         do
         {
-
+            attempts++;
             // minRange ~ maxRange 사이의 랜덤 포격 위치를 설정
             Vector2 randomDirection = Random.insideUnitCircle.normalized;
             float randomDistance = Random.Range(minRange, maxRange);
             targetPosition = playerPosition + randomDirection * randomDistance;
+
+            if (attempts > maxAttempts)
+            {
+                Debug.LogError("BoombardmentSkill : 위치를 찾지 못함");
+                break;
+            }
         }
         while (!isInMapBounds(targetPosition));
 

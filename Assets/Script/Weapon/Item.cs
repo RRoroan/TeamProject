@@ -27,11 +27,19 @@ public abstract class Item : MonoBehaviour
     public virtual void ApplyEffect(Player player)
     {
         skill = GetComponent<BaseSkill>();
+
         if (skill != null)
         {
-            player.skillManager.AddSkill(skill);
-            Debug.Log("스킬이 등록됨");
+            // 중복 등록 방지
+            if (!player.skillManager.HasSkill(skill))
+            {
+                player.skillManager.ResgisterSkills(this);
+                Debug.Log($"{itemName} 효과 적용됨");
+            }
+            else
+            {
+                Debug.LogWarning($"{itemName} 스킬이 이미 등록됨");
+            }
         }
-        return;
     }
 }
