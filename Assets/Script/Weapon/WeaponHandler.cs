@@ -40,12 +40,11 @@ public class WeaponHandler : MonoBehaviour
     {
         Controller = GetComponentInParent<BaseController>();
         weaponRenderer = GetComponent<SpriteRenderer>();
-        statHandler = GameManager.Instance.GetStatHandler();
     }
 
     protected virtual void Start()
     {
-
+        statHandler = GameManager.Instance.GetStatHandler();
     }
 
     protected virtual void Update()
