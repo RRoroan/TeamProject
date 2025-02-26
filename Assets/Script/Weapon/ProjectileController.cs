@@ -22,12 +22,13 @@ public class ProjectileController : MonoBehaviour
     public bool fxOnDestroy = true;
 
     ProjectileManager projectileManager;
-
+    private AnimationHandler animationHandler;
     private void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _rigidbody = GetComponent<Rigidbody2D>();
         pivot = transform.GetChild(0);
+        animationHandler = GetComponent<AnimationHandler>();
     }
 
     private void Update()
@@ -115,6 +116,7 @@ public class ProjectileController : MonoBehaviour
 
     private void DestroyProjectile(Vector3 position)
     {
+        animationHandler.DestroyProjectile();
         Destroy(this.gameObject);
     }
 

@@ -8,6 +8,7 @@ public class AnimationHandler : MonoBehaviour
     private static readonly int IsMovingR = Animator.StringToHash("isMovingR");
     private static readonly int IsMoving = Animator.StringToHash("isMoving");
     private static readonly int IsDamage = Animator.StringToHash("isDamage");
+    private static readonly int IsDestroy = Animator.StringToHash("isDestroy");
     protected Animator animator;
 
     protected void Awake()
@@ -33,9 +34,11 @@ public class AnimationHandler : MonoBehaviour
             animator.SetBool(IsMovingL, isMoving);
             animator.SetBool(IsMovingR, isMoving);
         }
-            
-        
+    }
 
+    public void DestroyProjectile()
+    {
+        animator.SetBool(IsDestroy, true);
     }
 
     public void Damage()
