@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6450842317840982169}
   - component: {fileID: 16126078984476736}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: BulletRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 7898602741290046078}
   - component: {fileID: 1725383109499911283}
   - component: {fileID: 5337652048919849711}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: P_Tank_Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7609606630368500184}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
