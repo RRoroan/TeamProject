@@ -29,11 +29,7 @@ public class RewardManager : MonoBehaviour
         {
             Reward reward = chosenRewards[i];
             Button button = rewardButtons[i];
-            if (button == null)
-            {
-                Debug.LogError($"버튼 {i}가 null입니다! Unity에서 버튼이 연결되었는지 확인하세요.");
-                continue;
-            }
+            
             rewardButtons[i].GetComponentInChildren<Text>().text = reward.rewardName;
             rewardButtons[i].onClick.RemoveAllListeners();
             rewardButtons[i].onClick.AddListener(() => SelectReward(reward));
