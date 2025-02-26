@@ -50,6 +50,5 @@ public class PlayerController : BaseController
             lookDirection = directionToTarget;
         }
 
-        Debug.DrawLine(transform.position, closestEnemy.transform.position);
     }
 }

@@ -11,6 +11,12 @@ public class EnemyController : BaseController
 
     protected bool isAttacking;
 
+    protected override void Update()
+    {
+        HandleAction();
+        Rotate(lookDirection);
+        HandleAttackDelay();
+    }
     public void Init(EnemyManager enemyManager, Transform target)
     {
         this.enemyManager = enemyManager;
@@ -48,7 +54,7 @@ public class EnemyController : BaseController
         {
             lookDirection = direction;
 
-            if (distance <= weaponHandler.AttackRange)
+            if (distance < weaponHandler.AttackRange)
             {
                 int layerMaskTarget = weaponHandler.target;
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, weaponHandler.AttackRange * 1.5f, (1 << LayerMask.NameToLayer("Level")) | layerMaskTarget);
@@ -64,6 +70,12 @@ public class EnemyController : BaseController
             movementDirection = direction;
         }
 
+    }
+
+    protected override void Attack()
+    {
+        if (lookDirection != Vector2.zero)
+            weaponHandler?.Attack();
     }
 
     public override void Death()
