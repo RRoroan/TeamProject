@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6450842317840982169}
   - component: {fileID: 16126078984476736}
   - component: {fileID: 2214138439978437076}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: BulletRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,8 +119,8 @@ GameObject:
   - component: {fileID: 1725383109499911283}
   - component: {fileID: 5337652048919849711}
   - component: {fileID: -1320188267742119247}
-  m_Layer: 9
-  m_Name: Tank_Bullet_Explosion
+  m_Layer: 11
+  m_Name: P_Tank_ExplosionBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,7 +184,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &5337652048919849711
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -241,7 +241,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7609606630368500184}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

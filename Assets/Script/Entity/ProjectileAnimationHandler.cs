@@ -19,7 +19,7 @@ public class ProjectileAnimationHandler : MonoBehaviour
         {
             animator.speed = 0.5f;
             Debug.Log("Setting Trigger");
-            animator.SetTrigger("Destroy");  // Assumes an animation trigger named "Destroy"
+            animator.SetTrigger("Explosion"); 
             StartCoroutine(DestroyAfterAnimation());
         }
         else
@@ -30,17 +30,15 @@ public class ProjectileAnimationHandler : MonoBehaviour
 
     private IEnumerator DestroyAfterAnimation()
     {
-        // Get the length of the "ProjectileDestroy" animation
-        float animTime = GetAnimationClipLength("ProjectileDestroy");
+        float animTime = GetAnimationClipLength("Explosion");
 
-        // Wait for the animation to finish before destroying
         yield return new WaitForSeconds(animTime);
         Destroy(gameObject);
     }
 
     private float GetAnimationClipLength(string clipName)
     {
-        if (animator.runtimeAnimatorController == null) return 0.5f; // Default delay
+        if (animator.runtimeAnimatorController == null) return 0.5f;
 
         foreach (AnimationClip clip in animator.runtimeAnimatorController.animationClips)
         {
@@ -50,6 +48,6 @@ public class ProjectileAnimationHandler : MonoBehaviour
             }
         }
 
-        return 0.5f; // Default delay if clip not found
+        return 0.5f;
     }
 }
