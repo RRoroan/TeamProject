@@ -10,9 +10,11 @@ public class WeaponHandler : MonoBehaviour
 
     [Header("Attack Info")]
     [SerializeField] private float speed = 1f;
+    [SerializeField] private float damage = 1f;
     public float Speed { get => speed; set => speed = value; }
     public float AttackRange { get => attackRange; set => attackRange = value; }
-    
+    public float Damage { get => damage; set => damage = value; }
+
 
     public LayerMask target;
 
