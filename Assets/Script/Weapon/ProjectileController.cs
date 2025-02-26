@@ -55,6 +55,16 @@ public class ProjectileController : MonoBehaviour
             Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
             return;
         }
+        if (collidedLayer == LayerMask.NameToLayer("EnemyProjectile") && gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
+        {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+            return;
+        }
+        if (collidedLayer == LayerMask.NameToLayer("PlayerProjectile") && gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
+        {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+            return;
+        }
         if (collidedLayer == LayerMask.NameToLayer("Enemy") && gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
         {
             Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());

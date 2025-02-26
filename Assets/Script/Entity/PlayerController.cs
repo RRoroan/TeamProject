@@ -7,6 +7,7 @@ public class PlayerController : BaseController
     private Camera _camera;
 
     private GameManager gameManager;
+    public AudioClip moveSoundClip;
 
     public void Init(GameManager gameManager)
     {
@@ -56,6 +57,14 @@ public class PlayerController : BaseController
         else
         {
             readytoAttack = false;
+        }
+    }
+    protected override void Movement(Vector2 direction)
+    {
+        base.Movement(direction);
+        if (moveSoundClip)
+        {
+            SoundManager.PlayClip(moveSoundClip);
         }
     }
 }

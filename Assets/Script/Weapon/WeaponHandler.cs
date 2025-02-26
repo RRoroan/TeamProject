@@ -35,6 +35,7 @@ public class WeaponHandler : MonoBehaviour
     [SerializeField] private float knockbackTime = 0.5f;
     public float KnockbackTime { get => knockbackTime; set => knockbackTime = value; }
 
+    public AudioClip attackSoundClip;
     public BaseController Controller { get; private set; }
 
 
@@ -56,7 +57,8 @@ public class WeaponHandler : MonoBehaviour
 
     public virtual void Attack()
     {
-
+        if(attackSoundClip)
+            SoundManager.PlayClip(attackSoundClip);
     }
 
     protected virtual void Rotate(bool isLeft)

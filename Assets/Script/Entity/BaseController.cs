@@ -76,7 +76,7 @@ public class BaseController : MonoBehaviour
 
     }
 
-    protected void Movement(Vector2 direction)
+    protected virtual void Movement(Vector2 direction)
     {
         direction = direction * statHandler.Speed;
         if (knockbackDuration > 0f)
@@ -154,7 +154,7 @@ public class BaseController : MonoBehaviour
             component.enabled = false;
         }
 
-        Destroy(gameObject, 2f);
+        Destroy(gameObject);
 
     }
 }
