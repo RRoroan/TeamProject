@@ -168,14 +168,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   delay: 1
-  bulletIndex: 0
+  bulletIndex: 1
   isOnKnockback: 0
   knockbackPower: 1
   knockbackTime: 1
   projectileSpawnPosition: {fileID: 2802308491905715478}
   maxBounces: 0
-  buleetSize: 0.5
-  duration: 10
+  buleetSize: 1
+  duration: 20
   spread: 1
   numberoProjectilesPerShot: 1
   multipleProjectileAngle: 1

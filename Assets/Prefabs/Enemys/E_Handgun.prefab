@@ -182,10 +182,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f09ecef899a3274389f792ac6abda3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 4
   range: 5
   speed: 1
-  attackspeed: 1
+  attackspeed: 0.8
   armor: 0
   projectileCount: 1
 --- !u!114 &3020964391744128985
