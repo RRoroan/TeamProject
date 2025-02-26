@@ -8987,6 +8987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefabs:
+  - {fileID: 5824419717889186750, guid: 6fda3036c5ae19d48901096ece5a46fa, type: 3}
   - {fileID: 5824419717889186750, guid: 35a8912531c17a745b449d3071809543, type: 3}
   impactParticleSystem: {fileID: 0}
 --- !u!1 &1465241052

@@ -23,12 +23,15 @@ public class ProjectileController : MonoBehaviour
 
     ProjectileManager projectileManager;
     private AnimationHandler animationHandler;
+    private ProjectileAnimationHandler projectileAnimationHandler;
+    private float destructionDelay = 0.5f;
     private void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _rigidbody = GetComponent<Rigidbody2D>();
         pivot = transform.GetChild(0);
         animationHandler = GetComponent<AnimationHandler>();
+        projectileAnimationHandler = GetComponent<ProjectileAnimationHandler>();
     }
 
     private void Update()
@@ -68,7 +71,14 @@ public class ProjectileController : MonoBehaviour
             }
             else
             {
-                DestroyProjectile(collision.contacts[0].point - direction * .2f);
+                if (projectileAnimationHandler != null)
+                {
+                    projectileAnimationHandler.PlayDestroyAnimation();
+                }
+                else
+                {
+                    DestroyProjectile(collision.contacts[0].normal);
+                }
             }
         }
         else if (rangeWeaponHandler.target.value == (rangeWeaponHandler.target.value | (1 << collision.gameObject.layer)))
@@ -86,7 +96,14 @@ public class ProjectileController : MonoBehaviour
                     }
                 }
             }
-            DestroyProjectile(collision.contacts[0].point);
+            if(projectileAnimationHandler != null)
+            {
+                projectileAnimationHandler.PlayDestroyAnimation();
+            }
+            else
+            {
+                DestroyProjectile(collision.contacts[0].normal);
+            }
         }
     }
 
@@ -116,8 +133,6 @@ public class ProjectileController : MonoBehaviour
 
     private void DestroyProjectile(Vector3 position)
     {
-        animationHandler.DestroyProjectile();
         Destroy(this.gameObject);
     }
-
 }
