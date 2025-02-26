@@ -11,6 +11,7 @@ public class SkillManager : MonoBehaviour
 
     //테스트용 코드
     public GameObject testItemPrefab;
+    public GameObject testBoombardPrefab;
     //-----
 
     private void Awake()
@@ -21,8 +22,9 @@ public class SkillManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(ActivateSkills());
-        //
+        // 테스트 ----
         GameObject testItem = Instantiate(testItemPrefab, player);
+        GameObject testBoombard = Instantiate(testBoombardPrefab, player);
         testItem.name = "TestProjectile";
 
         Item testItemComponent = testItem.GetComponent<Item>();
@@ -34,6 +36,17 @@ public class SkillManager : MonoBehaviour
         else
         {
             Debug.Log("테스트 아이템에 item컴포넌트가 없습니다.");
+        }
+        
+        Item testBoombardComponent = testBoombard.GetComponent<Item>();
+        if (testBoombardComponent != null)
+        {
+            inventory.Additem(testBoombardComponent);
+            Debug.Log("포격 아이템 추가 완료");
+        }
+        else
+        {
+            Debug.Log("포격아이템에 item 컴포넌트가 없음");
         }
         //
     }
@@ -65,6 +78,24 @@ public class SkillManager : MonoBehaviour
         if (item.skill == null) return;
 
         AddSkill(item.skill);
+    }
+
+    public void RemoveSkill(BaseSkill skill)
+    {
+        if (activeSkill.Contains(skill))
+        {
+            activeSkill.Remove(skill);
+            Debug.Log("스킬이 제거되었습니다.");
+        }
+    }
+
+    public void RemoveSkills(Item item)
+    {
+        BaseSkill skill = item.GetComponent<BaseSkill>();
+        if (skill != null)
+        {
+            RemoveSkill(skill);
+        }
     }
 
 }

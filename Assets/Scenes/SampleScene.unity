@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 84414885}
   - component: {fileID: 84414884}
   - component: {fileID: 84414883}
+  - component: {fileID: 84414886}
   m_Layer: 8
   m_Name: Collision
   m_TagString: Untagged
@@ -824,6 +825,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &84414886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84414881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 460dd6e985206084d9e29fe3d6fe3fd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &93531314
 GameObject:
   m_ObjectHideFlags: 0
@@ -996,7 +1009,6 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  projectileCount: 1
 --- !u!114 &105660013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9257,6 +9269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 476842867}
   testItemPrefab: {fileID: 2308503792717330318, guid: 2c29f452bec3cd04d8500b8a044d4faa, type: 3}
+  testBoombardPrefab: {fileID: 3262911432925664456, guid: 798122e56c2a52c4084f103ce34ffead, type: 3}
 --- !u!1 &1569028358
 GameObject:
   m_ObjectHideFlags: 0

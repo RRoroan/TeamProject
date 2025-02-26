@@ -15,6 +15,7 @@ public class ProjectileItem : Item
     public void AddProjectile()
     {
         rangeWeapon.NumberoProjectilesPerShot++;
+
     }
 
     public void IncreaseBullet()
