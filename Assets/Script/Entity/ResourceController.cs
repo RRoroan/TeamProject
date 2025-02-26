@@ -72,7 +72,7 @@ public class ResourceController : MonoBehaviour
 
     private void Death() // 위에서 보이듯 죽으면 베이스 컨트롤의 데스를 불러옴
     {
-        //baseController.Death();
+        baseController.Death();
     }
 
     public void ChangeRange(float change)
