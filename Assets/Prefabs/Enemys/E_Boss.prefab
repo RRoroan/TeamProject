@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 3412613146540569055}
   - component: {fileID: 104850210297330217}
   - component: {fileID: -3374639780532092663}
+  - component: {fileID: 7733612994408166445}
   m_Layer: 7
   m_Name: E_Boss
   m_TagString: Enemy
@@ -271,6 +272,19 @@ MonoBehaviour:
   attackspeed: 1
   armor: 0
   projectileCount: 1
+--- !u!114 &7733612994408166445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6401412441340689401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 689750804bbfe6b40819662b32c4826b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthChangeDelay: 0.5
 --- !u!1 &6837385434245735420
 GameObject:
   m_ObjectHideFlags: 0
