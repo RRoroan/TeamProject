@@ -10,8 +10,9 @@ public class MainMenuSceneController : MonoBehaviour
     public Button customizingButton;
     public Button optionButton;
     public Button exitButton;
+    public Button closeOptionButton;
 
-    public GameObject blurImage;
+    public GameObject optionPanel;
 
     void Start()
     {
@@ -19,6 +20,7 @@ public class MainMenuSceneController : MonoBehaviour
         customizingButton.onClick.AddListener(OnCustomizingClicked);
         optionButton.onClick.AddListener(OnOptionClicked);
         exitButton.onClick.AddListener(OnExitClicked);
+        closeOptionButton.onClick.AddListener(OnCloseOptionClicked);
     }
 
     void OnStageSelectClicked()
@@ -33,11 +35,16 @@ public class MainMenuSceneController : MonoBehaviour
 
     void OnOptionClicked()
     {
-        blurImage.SetActive(true);
+        optionPanel.SetActive(true);
     }
 
     void OnExitClicked()
     {
         SceneController.Instance.ExitGame();
+    }
+
+    void OnCloseOptionClicked()
+    {
+        optionPanel.SetActive(false);
     }
 }
