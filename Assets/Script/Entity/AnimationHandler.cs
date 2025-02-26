@@ -18,10 +18,24 @@ public class AnimationHandler : MonoBehaviour
     public void Move(Vector2 obj)
     {
         bool isMoving = obj.magnitude > .5f;
-        animator.SetBool(IsMovingL, isMoving);
-        animator.SetBool(IsMovingR, isMoving);
-        //animator.SetBool(IsMoving, isMoving);
+        if (gameObject.CompareTag("Enemy2"))
+        {
+            animator.SetBool(IsMoving, isMoving);
+        }
+        else if(gameObject.CompareTag("Enemy"))
+        {
+            animator.SetBool(IsMovingL, isMoving);
+            animator.SetBool(IsMovingR, isMoving);
+        }
+        else
+        {
+            animator.SetBool(IsMoving, isMoving);
+            animator.SetBool(IsMovingL, isMoving);
+            animator.SetBool(IsMovingR, isMoving);
+        }
+            
         
+
     }
 
     public void Damage()

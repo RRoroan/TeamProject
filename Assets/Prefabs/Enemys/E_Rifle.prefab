@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 3578582322313280709}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.75, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,9 +45,9 @@ GameObject:
   - component: {fileID: 2122592621588528020}
   - component: {fileID: 2223525188013631175}
   - component: {fileID: 1032582065563076399}
-  - component: {fileID: 3020964391744128985}
+  - component: {fileID: 5345450157565389688}
   m_Layer: 7
-  m_Name: E_Handgun
+  m_Name: E_Rifle
   m_TagString: Enemy2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,7 +102,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.19769913, y: -0.00014802814}
+  m_Offset: {x: 0.25142094, y: -0.2508496}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -113,7 +113,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3210055, y: 1.6517501}
+  m_Size: {x: 1.1896858, y: 1.8905137}
   m_EdgeRadius: 0
 --- !u!50 &8531112305287937819
 Rigidbody2D:
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterRenderer: {fileID: 6986262320511102705}
   weaponPivot: {fileID: 6142768154494558304}
-  WeaponPrefab: {fileID: 2203055964631787987, guid: 640270a6c5c7070469082a513b4bc091, type: 3}
+  WeaponPrefab: {fileID: 2203055964631787987, guid: 4efb6fafc258df6429acc9a401bbbc8c, type: 3}
   followRange: 15
 --- !u!114 &1032582065563076399
 MonoBehaviour:
@@ -182,13 +182,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f09ecef899a3274389f792ac6abda3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 4
+  health: 8
   range: 5
   speed: 1
-  attackspeed: 0.8
+  attackspeed: 1
   armor: 0
   projectileCount: 1
---- !u!114 &3020964391744128985
+--- !u!114 &5345450157565389688
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -275,7 +275,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: fe1af8c2f17a36e4f87d00543d7482bb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b1bb0c7dd2092be4a98e318f327994ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -296,7 +296,7 @@ Animator:
   m_GameObject: {fileID: 5044812697412589050}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9f85d86501228cc47b6446049e722c12, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0ae25c2db6f93124b9b976ef17f9431f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
