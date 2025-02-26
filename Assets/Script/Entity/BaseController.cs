@@ -91,12 +91,12 @@ public class BaseController : MonoBehaviour
 
     protected void Rotate(Vector2 direction)
     {
-        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
+        float rotz = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
        
         float t = 10f;
 
         transform.rotation = Quaternion.Lerp(
-            transform.rotation, Quaternion.Euler(0,0,rotZ), Time.deltaTime * t);
+            transform.rotation, Quaternion.Euler(0,0,rotz), Time.deltaTime * t);
 
         //if (weaponPivot != null)
         //{

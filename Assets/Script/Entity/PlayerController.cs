@@ -10,7 +10,7 @@ public class PlayerController : BaseController
 
     public void Init(GameManager gameManager)
     {
-         this.gameManager = gameManager;
+        this.gameManager = gameManager;
         _camera = Camera.main;
     }
 
@@ -18,7 +18,7 @@ public class PlayerController : BaseController
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        movementDirection = new Vector2 (horizontal, vertical).normalized;
+        movementDirection = new Vector2(horizontal, vertical).normalized;
 
         GameObject[] enemyType1 = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject[] enemyType2 = GameObject.FindGameObjectsWithTag("Enemy2");
@@ -53,6 +53,9 @@ public class PlayerController : BaseController
             }
             lookDirection = directionToTarget;
         }
-
+        else
+        {
+            readytoAttack = false;
+        }
     }
 }
