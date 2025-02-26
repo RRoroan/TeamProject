@@ -968,7 +968,7 @@ GameObject:
   - component: {fileID: 105660011}
   - component: {fileID: 105660012}
   - component: {fileID: 105660013}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TestProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1717,7 +1717,7 @@ GameObject:
   - component: {fileID: 476842871}
   - component: {fileID: 476842872}
   - component: {fileID: 476842873}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2082,7 +2082,7 @@ GameObject:
   - component: {fileID: 534159415}
   - component: {fileID: 534159417}
   - component: {fileID: 534159416}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DustParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8393,7 +8393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 553777277}
   - component: {fileID: 553777279}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wheel_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8728,7 +8728,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1060958076}
   - component: {fileID: 1060958077}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wheel_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8811,7 +8811,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1116688905}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WeaponPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8844,7 +8844,7 @@ GameObject:
   - component: {fileID: 1210649600}
   - component: {fileID: 1210649601}
   - component: {fileID: 1210649602}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9887,7 +9887,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1524187625}
   - component: {fileID: 1524187626}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SkillManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10294,7 +10294,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1950575508}
   - component: {fileID: 1950575509}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}

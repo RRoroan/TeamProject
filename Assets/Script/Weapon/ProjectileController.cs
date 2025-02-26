@@ -47,15 +47,23 @@ public class ProjectileController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Projectile"))
-    {
-            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
-            return; 
-        }
-        if (collision.gameObject.CompareTag("Player"))
+        int collidedLayer = collision.gameObject.layer;
+        if (collidedLayer == LayerMask.NameToLayer("PlayerProjectile") && gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
         {
             Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+            return;
         }
+        if (collidedLayer == LayerMask.NameToLayer("Enemy") && gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
+        {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+            return;
+        }
+        if (collidedLayer == LayerMask.NameToLayer("Player") && gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
+        {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+            return;
+        }
+
         if (levelCollisionLayer.value == (levelCollisionLayer.value | (1 << collision.gameObject.layer)))
         {
             if (bounceCount < rangeWeaponHandler.MaxBounces)

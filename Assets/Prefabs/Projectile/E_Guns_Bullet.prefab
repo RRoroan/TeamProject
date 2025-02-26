@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7433526687785171662}
   - component: {fileID: 3732216803286510408}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: BulletRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1936972808751939270}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 2628021834153120848}
   - component: {fileID: 8810069186161740541}
   - component: {fileID: 6885521181823078141}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: E_Guns_Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
