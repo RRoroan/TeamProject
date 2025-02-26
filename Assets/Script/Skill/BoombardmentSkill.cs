@@ -19,8 +19,7 @@ public class BoombardmentSkill : BaseSkill
     [SerializeField] private float skillSize = 0.5f;
     // 사라질 시간
     [SerializeField] private float lifetime = 1f;
-    // 스킬의 쿨다운
-    [SerializeField] private float cooldown = 3f;
+
 
     private bool isColldown = false;
 
@@ -34,12 +33,14 @@ public class BoombardmentSkill : BaseSkill
         mapMinBounds = mapSize.GetMinBounds();
         // 맵의 우상단 좌표
         mapMaxBounds = mapSize.GetMaxBounds();
+
+        cooldown = 15f;
     }
 
     public override void UseSkill()
     {
         if (isColldown) return;
-        StartCoroutine(SkillColldown());
+        StartCoroutine(SkillCooldown());
         Vector2 randomPosition = RandomBoombardPosition(player.transform.position);
         GameObject boombard = Instantiate(boombardPrefabs, randomPosition, Quaternion.identity);
 
@@ -49,28 +50,29 @@ public class BoombardmentSkill : BaseSkill
 
     }
 
-    // 스킬의 쿨다운이 되었을 때 사용 가능하게
-    private IEnumerator SkillColldown()
-    {
-        isColldown = true;
-        yield return new WaitForSeconds(cooldown);
-        isColldown = false;
-    }
-
     private Vector2 RandomBoombardPosition(Vector2 playerPosition)
     {
+        Vector2 targetPosition;
 
-        Vector2 randomDirection = Random.insideUnitCircle.normalized;
-        // minRange ~ maxRange 사이의 랜덤 포격 위치를 설정
-        float randomDistance = Random.Range(minRange, maxRange);
-        Vector2 targetPosition = playerPosition + randomDirection * randomDistance;
+        do
+        {
 
+            // minRange ~ maxRange 사이의 랜덤 포격 위치를 설정
+            Vector2 randomDirection = Random.insideUnitCircle.normalized;
+            float randomDistance = Random.Range(minRange, maxRange);
+            targetPosition = playerPosition + randomDirection * randomDistance;
+        }
+        while (!isInMapBounds(targetPosition));
+
+        return targetPosition;
+
+    }
+
+    private bool isInMapBounds(Vector2 position)
+    {
         // 스킬이 맵 밖을 안나가도록 조정
-        float adjustX = Mathf.Clamp(targetPosition.x, mapMinBounds.x + skillSize, mapMaxBounds.x - skillSize);
-        float adjustY = Mathf.Clamp(targetPosition.y, mapMinBounds.y + skillSize, mapMaxBounds.y - skillSize);
-
-        return new Vector2(adjustX, adjustY);
-
+        return (position.x >= mapMinBounds.x + skillSize) && (position.x <= mapMaxBounds.x - skillSize)
+            && (position.y >= mapMinBounds.y + skillSize) && (position.y <= mapMaxBounds.y - skillSize);
     }
 
 }
