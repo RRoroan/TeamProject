@@ -5,6 +5,7 @@ using UnityEngine;
 
 public abstract class BaseSkill : MonoBehaviour
 {
+    public int skillLevel = 1;
     [SerializeField] protected float cooldown = 10;
 
     public string SkillName;
@@ -58,4 +59,10 @@ public abstract class BaseSkill : MonoBehaviour
         yield return new WaitForSeconds(cooldown);
         isCooldown = false;
     }
+
+    public float GetCooldown()
+    {
+        return cooldown;
+    }
+
 }

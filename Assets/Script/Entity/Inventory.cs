@@ -36,7 +36,7 @@ public class Inventory : MonoBehaviour
         {
             items.Add(item);
             item.ApplyEffect(player);
-            player.skillManager.ResgisterSkills(item);
+            //player.skillManager.ResgisterSkills(item);
         }
     }
 

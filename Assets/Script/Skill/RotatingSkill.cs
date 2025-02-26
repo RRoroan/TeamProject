@@ -16,10 +16,12 @@ public class RotatingSkill : BaseSkill
     // 스킬이 지속될 시간
     [SerializeField] private float lifetime = 3f;
 
+    // 투사채 갯수
+    [SerializeField] private int projectileCount = 3;
+
     // 적에게 피해를 입힐 간격
     [SerializeField] private float hitInterval = 0.5f;
-
-    [SerializeField] private int projectileCount = 1;
+    [SerializeField] private LayerMask enemyLayer;
 
     // 활성화 될 무기를 넣어줄 리스트(projectileCount 만큼 넣어줄꺼임)
     private List<GameObject> activeWeapon = new List<GameObject>();
@@ -36,13 +38,20 @@ public class RotatingSkill : BaseSkill
 
     public override void UseSkill()
     {
-        if (isCooldown) return;
-        StartCoroutine(SkillCooldown());
+        if (!gameObject.activeSelf)
+        {
+            Debug.LogError($"UseSkill: {SkillName} 오브젝트가 비활성화 상태여서 실행 불가능!");
+            return;
+        }
+
+        StartCoroutine(SpawnWeapon());
 
     }
 
-    private void SpawnWeapon()
+    private IEnumerator SpawnWeapon()
     {
+        
+
         foreach (GameObject weapon in activeWeapon)
         {
             Destroy(weapon);
@@ -56,20 +65,42 @@ public class RotatingSkill : BaseSkill
         {
             float angle = i * weaponInterval;
             Vector2 spawnPosition = (Vector2)player.transform.position + GetPositionAngle(angle);
+
+
             GameObject weapon = Instantiate(rotatingPrefab, spawnPosition, Quaternion.identity);
             weapon.transform.parent = player.transform;
 
-            
+            RotatingWeaponController controller = weapon.GetComponent<RotatingWeaponController>();
+            if (controller != null)
+            {
+                controller.Init(player.transform, range, angle, rotationSpeed, hitInterval, enemyLayer);
+            }
+
+            activeWeapon.Add(weapon);
 
         }
+
+        yield return new WaitForSeconds(lifetime);
+        ClearBeforeWeapon();
 
 
     }
 
+    // 플레이어 주변 일정 반경에 생성됨
     private Vector2 GetPositionAngle(float angle)
     {
         float radius = angle * Mathf.Deg2Rad;
-        return new Vector2(Mathf.Cos(radius) * radius, Mathf.Sin(radius) * radius);
+        return new Vector2(Mathf.Cos(radius) * range, Mathf.Sin(radius) * range);
+    }
+
+    // 기존에 있는 무기 제거
+    private void ClearBeforeWeapon()
+    {
+        foreach (GameObject weapon in activeWeapon)
+        {
+            Destroy (weapon);
+        }
+        activeWeapon.Clear();
     }
 
 }
