@@ -48,12 +48,10 @@ MonoBehaviour:
   SkillName: abc
   RequiredItem: 123
   projectilePrefab: {fileID: 6610975837752573207, guid: 2eb24e9f2cd459e4daf829adca1d91f3, type: 3}
-  firePoint: {fileID: 0}
   projectileSpeed: 5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  projectileCount: 1
 --- !u!114 &4668016822580712472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,4 +66,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: 123
   description: asd
-  skill: {fileID: 0}
+  skill: {fileID: 2186362063595319925}

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 3493b93a6e4424b42b60978923e5cb32
+<<<<<<<< HEAD:Assets/Script/Manager/ButtonManager.cs.meta
+guid: e44ab4fcdf5d46544a013f4dda957ed0
+========
+guid: fb4e34e86b6a62e4a97bbded2acf7bb1
+>>>>>>>> cjh:Assets/Script/Skill/BoombardmentSkill.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

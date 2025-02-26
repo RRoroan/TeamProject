@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HpBarController : MonoBehaviour
 {
-    [SerializeField] private RectTransform fore;
+    [SerializeField] private RectTransform front;
 
     private Transform playerTransform;
     private Text hpText;
@@ -30,8 +30,8 @@ public class HpBarController : MonoBehaviour
         float hpBarScale = currentHealth / MaxHealth;
         if (hpBarScale >= 0 && hpBarScale <= 1)
         {
-            fore.localScale = Vector3.Lerp(
-                fore.localScale, new Vector3(hpBarScale, 1, 1), Time.deltaTime * 10f);
+            front.localScale = Vector3.Lerp(
+                front.localScale, new Vector3(hpBarScale, 1, 1), Time.deltaTime * 10f);
 
             hpText.text = currentHealth.ToString();
         }

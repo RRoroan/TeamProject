@@ -7,18 +7,13 @@ public class ProjectimeSkill : BaseSkill
 {
     // 투사채 프리팹
     [SerializeField] private GameObject projectilePrefab;
-    // 투사채 발사 위치
-    private Transform firePoint;
     // 투사체 속도
     [SerializeField] private float projectileSpeed = 5f;
     [SerializeField] private LayerMask enemyLayer;
 
-    public int projectileCount = 1;
-
     protected override void Start()
     {
         base.Start();
-        firePoint = player.transform;
     }
 
 
