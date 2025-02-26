@@ -19,6 +19,9 @@ public abstract class BaseSkill : MonoBehaviour
 
     protected bool isCooldown = false;
 
+    protected Vector2 mapMinBounds;
+    protected Vector2 mapMaxBounds;
+
     public void Awake()
     {
         player = FindObjectOfType<Player>();
@@ -29,6 +32,21 @@ public abstract class BaseSkill : MonoBehaviour
         statHandler = GameManager.Instance.GetStatHandler();
         mapSize = GameManager.Instance.mapSize;
         firePoint = player.transform;
+
+        // 맵의 좌하단 좌표
+        mapMinBounds = mapSize.GetMinBounds();
+        // 맵의 우상단 좌표
+        mapMaxBounds = mapSize.GetMaxBounds();
+
+        if (player == null)
+        {
+            Debug.Log("플레이어가 존재하지 않습니다.");
+        }
+    }
+
+    protected virtual void Update()
+    {
+
     }
 
     public abstract void UseSkill();

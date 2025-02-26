@@ -23,18 +23,11 @@ public class BoombardmentSkill : BaseSkill
 
     private bool isColldown = false;
 
-    private Vector2 mapMinBounds;
-    private Vector2 mapMaxBounds;
+
 
     protected override void Start()
     {
         base.Start();
-        // ¸ÊÀÇ ÁÂÇÏ´Ü ÁÂÇ¥
-        mapMinBounds = mapSize.GetMinBounds();
-        // ¸ÊÀÇ ¿ì»ó´Ü ÁÂÇ¥
-        mapMaxBounds = mapSize.GetMaxBounds();
-
-        cooldown = 15f;
     }
 
     public override void UseSkill()
