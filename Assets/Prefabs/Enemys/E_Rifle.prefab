@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 1032582065563076399}
   m_Layer: 7
   m_Name: E_Rifle
-  m_TagString: Enemy
+  m_TagString: Enemy2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -20,9 +20,13 @@ public class PlayerController : BaseController
         float vertical = Input.GetAxisRaw("Vertical");
         movementDirection = new Vector2 (horizontal, vertical).normalized;
 
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] enemyType1 = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] enemyType2 = GameObject.FindGameObjectsWithTag("Enemy2");
         float closestDistance = float.MaxValue;
         GameObject closestEnemy = null;
+
+        List<GameObject> enemies = new List<GameObject>(enemyType1);
+        enemies.AddRange(enemyType2);
 
         foreach (GameObject enemy in enemies)
         {
