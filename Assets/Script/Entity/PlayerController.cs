@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : BaseController
@@ -8,6 +9,7 @@ public class PlayerController : BaseController
     private WeaponHandler currentWeapon;
     private GameManager gameManager;
     public AudioClip moveSoundClip;
+    public ResourceController resourceController;
 
 
     protected override void Awake()
@@ -89,5 +91,15 @@ public class PlayerController : BaseController
         {
             SoundManager.PlayClip(moveSoundClip);
         }
+    }
+
+    public override void Death()
+    {
+        base.Death();
+        if (resourceController.CurrentHealth <= 0f)
+        {
+            gameManager.GameOver();
+        }
+
     }
 }
