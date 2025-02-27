@@ -18,6 +18,7 @@ public class StageSelectSceneController : MonoBehaviour
 
     void OnStageClicked(int stageNum)
     {
+        GameManager.currentWaveIndex = 0;
         SceneController.Instance.Stage(stageNum, 1);
     }
 

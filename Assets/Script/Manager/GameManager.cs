@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour
     private EnemyManager enemyManager;
     public static bool isFirstLoading = true;
 
-    [SerializeField] private int currentWaveIndex = 0;
+    [SerializeField] public static int currentWaveIndex = 0;
 
     private void Awake()
     {
@@ -58,11 +59,18 @@ public class GameManager : MonoBehaviour
 
     void StartNextWave()
     {
+        Debug.Log($"Index : {currentWaveIndex}");
+        enemyManager.StartWave(1 + currentWaveIndex * 2);
+
+    }
+
+    public void EndOfWave()
+    {
+        currentWaveIndex += 1;
+
         if (currentWaveIndex < 5)
         {
-            currentWaveIndex += 1;
-
-            enemyManager.StartWave(1 + currentWaveIndex * 2);
+            StartNextWave();
         }
         else if (currentWaveIndex == 5)
         {
@@ -70,16 +78,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("다음 웨이브로 넘어갈 수 없습니다.");
+            SceneManager.LoadScene("MainMenu");
         }
         
-
-
-    }
-
-    public void EndOfWave()
-    {
-        StartNextWave();
     }
 
     public void GameOver()
