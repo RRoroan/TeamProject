@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7077068213203258869}
   - component: {fileID: 2776074887521487180}
   m_Layer: 0
-  m_Name: TestBoombard
+  m_Name: BoombardSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

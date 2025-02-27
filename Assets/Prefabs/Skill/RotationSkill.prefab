@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5002764336844084066}
   - component: {fileID: 7056925112237255691}
   m_Layer: 0
-  m_Name: TestRotation
+  m_Name: RotationSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

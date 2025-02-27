@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 404460892037294136}
   - component: {fileID: 8140640415804635906}
   m_Layer: 0
-  m_Name: TestBoombardPrefab
+  m_Name: BoombardPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -850,7 +850,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue Effect Bullet Impact Explosion 32x32_40
+      name: projectile0
       rect:
         serializedVersion: 2
         x: 352
@@ -871,7 +871,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue Effect Bullet Impact Explosion 32x32_41
+      name: projectile1
       rect:
         serializedVersion: 2
         x: 384
@@ -892,7 +892,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue Effect Bullet Impact Explosion 32x32_42
+      name: projectile2
       rect:
         serializedVersion: 2
         x: 416
@@ -913,7 +913,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue Effect Bullet Impact Explosion 32x32_43
+      name: projectile3
       rect:
         serializedVersion: 2
         x: 448
@@ -4479,10 +4479,6 @@ TextureImporter:
       Blue Effect Bullet Impact Explosion 32x32_38: 1531239499
       Blue Effect Bullet Impact Explosion 32x32_39: -959079898
       Blue Effect Bullet Impact Explosion 32x32_4: -823251978
-      Blue Effect Bullet Impact Explosion 32x32_40: 1058802485
-      Blue Effect Bullet Impact Explosion 32x32_41: 160850690
-      Blue Effect Bullet Impact Explosion 32x32_42: -1559173197
-      Blue Effect Bullet Impact Explosion 32x32_43: 628255077
       Blue Effect Bullet Impact Explosion 32x32_44: 1432992000
       Blue Effect Bullet Impact Explosion 32x32_45: 335055954
       Blue Effect Bullet Impact Explosion 32x32_46: -132428904
@@ -4548,6 +4544,10 @@ TextureImporter:
       pro2: -843641592
       pro3: 1360753974
       pro4: 1273862937
+      projectile0: 1058802485
+      projectile1: 160850690
+      projectile2: -1559173197
+      projectile3: 628255077
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
