@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BoombardmentSkillExplosion : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class BoombardmentSkillExplosion : MonoBehaviour
 
 
     //기본 데미지
-    [SerializeField] private float addDamage = 10f;
+    [SerializeField] private float addDamage;
     // 총합 데미지
     private float damage;
     private RangeWeaponHandler rangeWeaponHandler;
@@ -39,8 +40,9 @@ public class BoombardmentSkillExplosion : MonoBehaviour
 
     }
 
-    public void Init(float radius, LayerMask enemy, float _arriveTime, Vector2 _targetPosition)
+    public void Init(int _damage, float radius, LayerMask enemy, float _arriveTime, Vector2 _targetPosition)
     {
+        addDamage = _damage;
         explosionRadius = radius;
         enemyLayer = enemy;
         arrivalTime = _arriveTime;
@@ -48,16 +50,28 @@ public class BoombardmentSkillExplosion : MonoBehaviour
 
         startPosition = transform.position;
 
+        // 이동거리를 계산 후 그에 따른 속도 설정
         float distance = Vector2.Distance(startPosition, targetPosition);
         speed = distance / arrivalTime;
+
 
         rangeWeaponHandler = FindObjectOfType<RangeWeaponHandler>();
         damage = (addDamage + rangeWeaponHandler.Damage) * 2;
     }
 
-    private void TriggerExplosion()
+    public Quaternion RotateToTarget()
     {
-        Animator anim = GetComponent<Animator>();
+        // 방향을 목표 위치로 회전시키기
+        Vector2 direction = (targetPosition - startPosition).normalized;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion playerRotate = Quaternion.Euler(0, 0, angle + 90);
+
+        return playerRotate;
+    }
+
+    public void TriggerExplosion()
+    {
+        Animator anim = GetComponentInChildren<Animator>();
         if (anim != null)
         {
             anim.SetTrigger("Explode");
@@ -65,7 +79,7 @@ public class BoombardmentSkillExplosion : MonoBehaviour
         
     }
 
-    private void Attack()
+    public void Attack()
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, explosionRadius, enemyLayer);
         foreach (Collider2D enemy in hitEnemies)
@@ -79,7 +93,7 @@ public class BoombardmentSkillExplosion : MonoBehaviour
         }
     }
 
-    private void ExplosionDestroy()
+    public void ExplosionDestroy()
     {
         Destroy(gameObject);
     }

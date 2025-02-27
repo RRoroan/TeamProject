@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class BaseSkill : MonoBehaviour
 {
     public int skillLevel = 1;
+    [SerializeField] protected int damage = 4;
     [SerializeField] protected float cooldown = 10;
     
 
@@ -64,6 +66,11 @@ public abstract class BaseSkill : MonoBehaviour
     public float GetCooldown()
     {
         return cooldown;
+    }
+
+    public virtual void SkillLevelUp()
+    {
+        skillLevel++;
     }
 
 }
