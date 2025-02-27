@@ -23,6 +23,9 @@ public class ProjectimeSkill : BaseSkill
     [Header("Å¸°Ù")]
     [SerializeField] private LayerMask enemyLayer;
 
+    [Header("ÅºµÎ ¼³Á¤")]
+    [SerializeField] private float arrivalTime = 2f;
+
     // ¸ðµç Åõ»çÃ¼ °¹¼ö
     private int AllproCount;
 

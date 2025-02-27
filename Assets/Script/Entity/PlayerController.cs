@@ -5,10 +5,33 @@ using UnityEngine;
 public class PlayerController : BaseController
 {
     private Camera _camera;
-
+    private WeaponHandler currentWeapon;
     private GameManager gameManager;
     public AudioClip moveSoundClip;
 
+
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+    protected override void Start()
+    {
+        base.Start();
+    }
+
+    public void EquipWeapon(WeaponHandler newweaponHandler)
+    {
+        if (WeaponPrefab != null)
+        {
+            Debug.Log("Destroying");
+            Destroy(weaponHandler.gameObject);  // Destroy the weapon's GameObject
+        }
+
+        if (newweaponHandler != null)
+        {
+            weaponHandler = Instantiate(newweaponHandler, weaponPivot); // Instantiate the new weapon
+        }
+    }
     public void Init(GameManager gameManager)
     {
         this.gameManager = gameManager;

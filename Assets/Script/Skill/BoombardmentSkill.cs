@@ -20,8 +20,12 @@ public class BoombardmentSkill : BaseSkill
     [SerializeField] private float skillSize = 0.5f;
     // 사라질 시간
     [SerializeField] private float lifetime = 1f;
+
     [Header("타겟")]
     [SerializeField] private LayerMask enemyLayer;
+
+    [Header("탄두 설정")]
+    [SerializeField] private float arrivalTime = 2f;
 
 
 
@@ -41,13 +45,15 @@ public class BoombardmentSkill : BaseSkill
         }
 
         Vector2 randomPosition = RandomBoombardPosition(playerController.transform.position);
-        GameObject boombard = Instantiate(boombardPrefabs, randomPosition, Quaternion.identity);
+        Vector2 createPosition = new Vector2(randomPosition.x + Random.Range(mapMinBounds.x - 5, mapMaxBounds.x + 5)
+            , randomPosition.y + Random.Range(mapMaxBounds.y + 3, mapMaxBounds.y + 6));
+        GameObject boombard = Instantiate(boombardPrefabs, createPosition, Quaternion.identity);
         boombard.transform.localScale = new Vector3(skillSize, skillSize, 1f);
 
         BoombardmentSkillExplosion explosion = boombard.GetComponent<BoombardmentSkillExplosion>();
         if (explosion != null)
         {
-            explosion.Init(skillSize, enemyLayer);
+            explosion.Init(skillSize, enemyLayer, arrivalTime, randomPosition);
         }
 
         Destroy(boombard, lifetime);
