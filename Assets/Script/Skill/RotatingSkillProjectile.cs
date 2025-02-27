@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class RotatingWeaponController : MonoBehaviour
+public class RotatingSkillProjectile : MonoBehaviour
 {
     private Transform player;
     private float range;
@@ -11,10 +12,16 @@ public class RotatingWeaponController : MonoBehaviour
     private float rotationSpeed;
     private LayerMask enemyLayer;
 
+    // 스킬 자체 데미지
+    [SerializeField] private float addDamage = 5f;
+    // 총함 데미지(addDamage + 플레이어 공격력)
+    private float damage;
+
+
 
     private float attackTimer = 0f;
 
-
+    // 키 : Collider2D (공격한 적) float(마지막으로 공격한 시간) 
     private Dictionary<Collider2D, float> lastHitTime = new Dictionary<Collider2D, float>();
 
     public void Init(Transform _player, float _range, float _angle, float _rotationSpeed
@@ -27,6 +34,11 @@ public class RotatingWeaponController : MonoBehaviour
         hitInterval = _hitInterval;
         enemyLayer = _enemyLayer; 
 
+    }
+
+    private void Start()
+    {
+        damage = addDamage; // + 플레이어 공격력
     }
 
     // Update is called once per frame
@@ -61,11 +73,34 @@ public class RotatingWeaponController : MonoBehaviour
 
     private void Attack()
     {
+        // 현재 투사채 위치(transform.position), (탐색 반경), (적의 레이어)
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, 0.5f, enemyLayer);
-        foreach (Collider2D enmmy in hitEnemies)
+
+        foreach (Collider2D enemy in hitEnemies)
         {
-            // 적들의 정보를 가져오고 적들의 체력을 깍을 수 있게 해야합니다.
+            if (CanAttack(enemy))
+            {
+                ResourceController resourceController = enemy.GetComponent<ResourceController>();
+                if (resourceController != null)
+                {
+                    resourceController.ChangeHealth(-damage);
+                    lastHitTime[enemy] = Time.time;
+                }
+            }
         }
+    }
+
+    // 중복방지(hitInterval로 타격간격 조정)
+    private bool CanAttack(Collider2D enemy)
+    {
+        if (lastHitTime.ContainsKey(enemy))
+        {
+            if (Time.time - lastHitTime[enemy] < hitInterval)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
