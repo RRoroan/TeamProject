@@ -49,6 +49,7 @@ public class SkillManager : MonoBehaviour
         {
             skill.SkillLevelUp(); // 이미 존재하는 경우 레벨 증가
             Debug.Log($"{skill.SkillName} 스킬 레벨 업! 현재 레벨: {skill.skillLevel}");
+
             return;
         }
 
@@ -69,6 +70,23 @@ public class SkillManager : MonoBehaviour
         skillCoroutines[newSkill] = skillRoutine;
 
         Debug.Log($"{newSkill.SkillName} 스킬이 활성화됨!");
+    }
+
+
+    public void RestartSkill(BaseSkill skill)
+    {
+        BaseSkill exisitingSkill = activeSkills.Find(sk => sk.SkillName == skill.SkillName);
+
+        if (exisitingSkill == null) return;
+
+        if (skillCoroutines.ContainsKey(exisitingSkill))
+        {
+            StopCoroutine(skillCoroutines[exisitingSkill]);
+            skillCoroutines.Remove(exisitingSkill);
+        }
+
+        Coroutine skillRoutine = StartCoroutine(SkillRoutine(exisitingSkill));
+        skillCoroutines[exisitingSkill] = skillRoutine;
     }
 
     

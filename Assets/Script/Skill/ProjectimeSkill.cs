@@ -31,7 +31,7 @@ public class ProjectimeSkill : BaseSkill
     protected override void Start()
     {
         base.Start();
-        allProCount = projectileCount + statHandler.GetProjectileCount();
+        allProCount = GetCurrentProjectileCount();
     }
 
 
@@ -42,11 +42,11 @@ public class ProjectimeSkill : BaseSkill
             Debug.LogError($"UseSkill: {SkillName} 오브젝트가 비활성화 상태여서 실행 불가능!");
             return;
         }
-        if (skillCoroutine != null)
-        {
-            StopCoroutine(skillCoroutine);
-            skillCoroutine = null;
-        }
+        //if (skillCoroutine != null)
+        //{
+        //    StopCoroutine(skillCoroutine);
+        //    skillCoroutine = null;
+        //}
 
         skillCoroutine = StartCoroutine(FireProjectiles());
       
@@ -165,13 +165,14 @@ public class ProjectimeSkill : BaseSkill
         }
         damage++;
 
-        if (skillCoroutine != null)
-        {
-            StopCoroutine(skillCoroutine);
-            skillCoroutine = null;
-        }
+        SkillManagerReset();
 
-            UseSkill();
+        //if (skillCoroutine != null)
+        //{
+        //    StopCoroutine(skillCoroutine);
+        //    skillCoroutine = null;
+        //}
+
     }
 
     public IEnumerator RestartCoroutine()

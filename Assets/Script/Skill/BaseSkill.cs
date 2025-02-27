@@ -73,4 +73,13 @@ public abstract class BaseSkill : MonoBehaviour
         skillLevel++;
     }
 
+    protected void SkillManagerReset()
+    {
+        SkillManager skillManager = FindObjectOfType<SkillManager>();
+        if (skillManager != null)
+        {
+            skillManager.RestartSkill(this);
+        }
+    }
+
 }
