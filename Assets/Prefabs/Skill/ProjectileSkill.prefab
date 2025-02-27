@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1114958988575426351}
   - component: {fileID: 2186362063595319925}
   m_Layer: 0
-  m_Name: TestProjectile
+  m_Name: ProjectileSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,13 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillLevel: 1
-  cooldown: 2
+  cooldown: 10
   SkillName: Projectile
   RequiredItem: 123
   projectilePrefab: {fileID: 6610975837752573207, guid: 2eb24e9f2cd459e4daf829adca1d91f3, type: 3}
   projectileSpeed: 5
   projectileSize: 0.5
-  projectileCount: 3
+  projectileCount: 1
   projectileInterval: 0.3
   ispierce: 1
   enemyLayer:

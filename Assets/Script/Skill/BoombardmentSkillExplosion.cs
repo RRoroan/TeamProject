@@ -24,13 +24,29 @@ public class BoombardmentSkillExplosion : MonoBehaviour
     {
         explosionRadius = radius;
         enemyLayer = enemy;
-        StartCoroutine(ExplodeAfterDelay());
     }
 
-    private IEnumerator ExplodeAfterDelay()
-    {
-        yield return new WaitForSeconds(explosionDelay);
+    //private IEnumerator ExplodeAfterDelay()
+    //{
+    //    yield return new WaitForSeconds(explosionDelay);
 
+    //    Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, explosionRadius, enemyLayer);
+    //    foreach (Collider2D enemy in hitEnemies)
+    //    {
+    //        ResourceController resource = new ResourceController();
+    //        if (resource != null)
+    //        {
+    //            resource.ChangeHealth(-damage);
+    //        }
+    //    }
+
+        
+    //    Destroy(gameObject); 
+
+    //}
+
+    private void Attack()
+    {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, explosionRadius, enemyLayer);
         foreach (Collider2D enemy in hitEnemies)
         {
@@ -41,10 +57,11 @@ public class BoombardmentSkillExplosion : MonoBehaviour
                 Debug.Log($" {enemy.name}에게 {damage} 데미지 ");
             }
         }
+    }
 
-        
-        Destroy(gameObject); 
-
+    private void ExplosionDestroy()
+    {
+        Destroy(gameObject);
     }
 
     private void OnDrawGizmos()
