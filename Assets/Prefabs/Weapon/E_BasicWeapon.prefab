@@ -142,6 +142,7 @@ MonoBehaviour:
   isOnKnockback: 0
   knockbackPower: 1
   knockbackTime: 1
+  attackSoundClip: {fileID: 0}
   projectileSpawnPosition: {fileID: 3459966257844306314}
   maxBounces: 0
   buleetSize: 1

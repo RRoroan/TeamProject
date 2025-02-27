@@ -70,7 +70,7 @@ public class RotatingSkill : BaseSkill
             GameObject weapon = Instantiate(rotatingPrefab, spawnPosition, Quaternion.identity);
             weapon.transform.parent = player.transform;
 
-            RotatingWeaponController controller = weapon.GetComponent<RotatingWeaponController>();
+            RotatingSkillProjectile controller = weapon.GetComponent<RotatingSkillProjectile>();
             if (controller != null)
             {
                 controller.Init(player.transform, range, angle, rotationSpeed, hitInterval, enemyLayer);
