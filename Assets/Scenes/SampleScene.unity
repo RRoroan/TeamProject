@@ -837,76 +837,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 460dd6e985206084d9e29fe3d6fe3fd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &105660010
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 105660011}
-  - component: {fileID: 105660012}
-  - component: {fileID: 105660013}
-  m_Layer: 6
-  m_Name: TestProjectile
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &105660011
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 105660010}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 476842867}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &105660012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 105660010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7196d5502d3deda4fa1f400def87638e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillLevel: 1
-  cooldown: 10
-  SkillName: 
-  RequiredItem: 
-  projectilePrefab: {fileID: 6610975837752573207, guid: 2eb24e9f2cd459e4daf829adca1d91f3, type: 3}
-  projectileSpeed: 5
-  projectileSize: 0.5
-  projectileCount: 1
-  projectileInterval: 0.3
-  ispierce: 1
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 128
---- !u!114 &105660013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 105660010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04dd80aa8e185b0428847dc642516717, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &125006983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,7 +1207,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 374639827}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04dd80aa8e185b0428847dc642516717, type: 3}
+  m_Script: {fileID: 11500000, guid: 5936ad462a5bed149bf70df4dd9f61a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &374639830
@@ -1690,7 +1620,6 @@ Transform:
   - {fileID: 1116688905}
   - {fileID: 1210649600}
   - {fileID: 534159415}
-  - {fileID: 105660011}
   - {fileID: 1524187625}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10032,10 +9961,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - {fileID: 6401412441340689401, guid: 9661a993d4394f1499a8286734914431, type: 3}
   - {fileID: 3652378525465268157, guid: c1a9332ad6a27d94bbb0571c663fdd5f, type: 3}
   - {fileID: 3652378525465268157, guid: 5d05b516c09d5b04da6e931a88516a86, type: 3}
   - {fileID: 3652378525465268157, guid: 79fce497de22762428daba870f6a82fd, type: 3}
+  bossPrefab: {fileID: 6401412441340689401, guid: 9661a993d4394f1499a8286734914431, type: 3}
   spawnAreas:
   - serializedVersion: 2
     x: -8

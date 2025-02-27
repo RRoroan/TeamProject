@@ -6,7 +6,10 @@ public class BoombardmentSkillExplosion : MonoBehaviour
 {
     private float explosionRadius;
     private LayerMask enemyLayer;
-    private float explosionDelay = 0.8f; //폴발 애니메이션 시간
+
+    private Vector2 targetPosition;
+    private bool isMoving = true;
+
 
     //기본 데미지
     [SerializeField] private float addDamage = 10f;
@@ -14,36 +17,53 @@ public class BoombardmentSkillExplosion : MonoBehaviour
     private float damage;
     private RangeWeaponHandler rangeWeaponHandler;
 
-    private void Start()
+    private Vector2 startPosition;
+    private float speed;
+    private float arrivalTime;
+    private float elapsedTime = 0f;
+
+
+    private void Update()
     {
+        if (!isMoving) return;
+
+        elapsedTime += Time.deltaTime;
+        float progress = elapsedTime / arrivalTime;
+        transform.position = Vector2.Lerp(startPosition, targetPosition, progress);
+
+        if (elapsedTime >= arrivalTime)
+        {
+            isMoving = false;
+            TriggerExplosion();
+        }
+
+    }
+
+    public void Init(float radius, LayerMask enemy, float _arriveTime, Vector2 _targetPosition)
+    {
+        explosionRadius = radius;
+        enemyLayer = enemy;
+        arrivalTime = _arriveTime;
+        targetPosition = _targetPosition;
+
+        startPosition = transform.position;
+
+        float distance = Vector2.Distance(startPosition, targetPosition);
+        speed = distance / arrivalTime;
+
         rangeWeaponHandler = FindObjectOfType<RangeWeaponHandler>();
         damage = (addDamage + rangeWeaponHandler.Damage) * 2;
     }
 
-    public void Init(float radius, LayerMask enemy)
+    private void TriggerExplosion()
     {
-        explosionRadius = radius;
-        enemyLayer = enemy;
-    }
-
-    //private IEnumerator ExplodeAfterDelay()
-    //{
-    //    yield return new WaitForSeconds(explosionDelay);
-
-    //    Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, explosionRadius, enemyLayer);
-    //    foreach (Collider2D enemy in hitEnemies)
-    //    {
-    //        ResourceController resource = new ResourceController();
-    //        if (resource != null)
-    //        {
-    //            resource.ChangeHealth(-damage);
-    //        }
-    //    }
-
+        Animator anim = GetComponent<Animator>();
+        if (anim != null)
+        {
+            anim.SetTrigger("Explode");
+        }
         
-    //    Destroy(gameObject); 
-
-    //}
+    }
 
     private void Attack()
     {
