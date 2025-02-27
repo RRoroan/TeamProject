@@ -39,39 +39,39 @@ public class GameManager : MonoBehaviour
         return statHandler;
     }
 
-    //private void Start()
-    //{
-    //    if (!isFirstLoading)
-    //    {
-    //        StartGame();
-    //    }
-    //    else
-    //    {
-    //        isFirstLoading = false;
-    //    }
-    //}
+    private void Start()
+    {
+        if (isFirstLoading)
+        {
+            StartGame();
+        }
+        else
+        {
+            isFirstLoading = true;
+        }
+    }
 
-    //public void StartGame()
-    //{
-    //    //uiManager.SetPlayGame();
-    //    StartNextWave();
-    //}
+    public void StartGame()
+    {
+        //uiManager.SetPlayGame();
+        StartNextWave();
+    }
 
-    //void StartNextWave()
-    //{
-    //    currentWaveIndex += 1;
-    //    //uiManager.ChangeWave(currentWaveIndex);
-    //    enemyManager.StartWave(1 + currentWaveIndex / 5);
-    //}
+    void StartNextWave()
+    {
+        currentWaveIndex += 1;
+        //uiManager.ChangeWave(currentWaveIndex);
+        enemyManager.StartWave(1 + currentWaveIndex*2);
+    }
 
-    //public void EndOfWave()
-    //{
-    //    StartNextWave();
-    //}
+    public void EndOfWave()
+    {
+        StartNextWave();
+    }
 
-    //public void GameOver()
-    //{
-    //    enemyManager.StopWave();
-    //    //uiManager.SetGameOver();
-    //}
+    public void GameOver()
+    {
+        enemyManager.StopWave();
+        //uiManager.SetGameOver();
+    }
 }

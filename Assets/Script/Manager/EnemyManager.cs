@@ -47,7 +47,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (waveCount <= 0)
         {
-            //gameManager.EndOfWave();
+            gameManager.EndOfWave();
             return;
         }
 
@@ -127,7 +127,7 @@ public class EnemyManager : MonoBehaviour
         if (enemySpawnComplite && activeEnemies.Count == 0)
         {
             Debug.Log("다음 웨이브");
-            //gameManager.EndOfWave();
+            gameManager.EndOfWave();
         }
 
     }
