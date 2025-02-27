@@ -24,7 +24,7 @@ public class SkillManager : MonoBehaviour
                 yield break;
             }
 
-            StartCoroutine(DelaySkill(skill));
+            //StartCoroutine(DelaySkill(skill));
 
             float cooldown = skill.GetCooldown();
             if (cooldown <= 0)
@@ -33,7 +33,8 @@ public class SkillManager : MonoBehaviour
                 yield break;
             }
 
-            yield return new WaitForSeconds(cooldown);
+            yield return new WaitForSeconds(skill.GetCooldown());
+            if (skill != null) skill.UseSkill();
         }
     }
 
@@ -49,7 +50,7 @@ public class SkillManager : MonoBehaviour
         {
             skill.SkillLevelUp(); // 이미 존재하는 경우 레벨 증가
             Debug.Log($"{skill.SkillName} 스킬 레벨 업! 현재 레벨: {skill.skillLevel}");
-
+            RestartSkill(skill);
             return;
         }
 
@@ -81,12 +82,14 @@ public class SkillManager : MonoBehaviour
 
         if (skillCoroutines.ContainsKey(exisitingSkill))
         {
-            StopCoroutine(skillCoroutines[exisitingSkill]);
-            skillCoroutines.Remove(exisitingSkill);
+            RemoveSkill(exisitingSkill);
         }
 
-        Coroutine skillRoutine = StartCoroutine(SkillRoutine(exisitingSkill));
-        skillCoroutines[exisitingSkill] = skillRoutine;
+        BaseSkill newSkill = Instantiate(skill, player); // 새 인스턴스 생성
+        activeSkills.Add(newSkill);
+
+        Coroutine skillRoutine = StartCoroutine(SkillRoutine(newSkill));
+        skillCoroutines[newSkill] = skillRoutine;
     }
 
     
