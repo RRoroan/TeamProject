@@ -1,74 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
-    // 활성화 된 스킬 목록(먹은 아이템)
-    private List<BaseSkill> activeSkill = new List<BaseSkill>();
-    private Inventory inventory;
-    public Transform player; // 플레이어의 Transform
-
+    private List<BaseSkill> activeSkills = new List<BaseSkill>();
     private Dictionary<BaseSkill, Coroutine> skillCoroutines = new Dictionary<BaseSkill, Coroutine>();
-
-    //테스트용 코드
-    public GameObject testItemPrefab;
-    public GameObject testBoombardPrefab;
-    public GameObject testRotationPrefab;
-    //-----
+    public Transform player; // 플레이어의 Transform
+    public List<SkillReward> availableSkills;
 
     private void Awake()
     {
-        inventory = FindObjectOfType<Inventory>();
-    }
-
-    private void Start()
-    {
-        // 테스트 ----
-        GameObject testItem = Instantiate(testItemPrefab, player);
-        GameObject testBoombard = Instantiate(testBoombardPrefab, player);
-        GameObject testRotation = Instantiate(testRotationPrefab, player);
-        testItem.name = "TestProjectile";
-
-        Item testItemComponent = testItem.GetComponent<Item>();
-        if (testItemComponent != null)
-        {
-            inventory.Additem(testItemComponent);
-            Debug.Log("투사체 아이템 추가 완료");
-        }
-        else
-        {
-            Debug.Log("투사체 아이템에 item컴포넌트가 없습니다.");
-        }
-        
-        Item testBoombardComponent = testBoombard.GetComponent<Item>();
-        if (testBoombardComponent != null)
-        {
-            inventory.Additem(testBoombardComponent);
-            Debug.Log("포격 아이템 추가 완료");
-        }
-        else
-        {
-            Debug.Log("포격아이템에 item 컴포넌트가 없음");
-        }
-
-        Item testRotationComponent = testRotation.GetComponent<Item>();
-        if (testRotationComponent != null)
-        {
-            inventory.Additem(testRotationComponent);
-            Debug.Log("회전아이템 추가 완료");
-        }
-        else
-        {
-            Debug.LogError("회전 아이템에 item컴포넌트가 없습니다.");
-        }
 
     }
 
     private IEnumerator SkillRoutine(BaseSkill skill)
     {
-        while (activeSkill.Contains(skill))
+        while (activeSkills.Contains(skill))
         {
             if (skill == null)
             {
@@ -89,64 +37,60 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    IEnumerator DelaySkill(BaseSkill skill)
+    private IEnumerator DelaySkill(BaseSkill skill)
     {
         yield return new WaitForSeconds(3f);
         skill.UseSkill();
     }
 
-    // 스킬을 추가하고 스킬이 추가 됐을 때 바로 스킬루틴 실행
     public void AddSkill(BaseSkill skill)
     {
-        if (!activeSkill.Contains(skill))
+        if (HasSkill(skill))
         {
-            activeSkill.Add(skill);
-
-            if (!skill.gameObject.activeSelf)
-            {
-                skill.gameObject.SetActive(true);
-            }
-
-
-            // 만약 진행중인 코루틴이 있다면 중지하고 삭제
-            if (skillCoroutines.ContainsKey(skill))
-            {
-                StopCoroutine(skillCoroutines[skill]);
-                skillCoroutines.Remove(skill);
-            }
-
-            Coroutine skillRoutine = StartCoroutine(SkillRoutine(skill));
-
-            skillCoroutines[skill] = skillRoutine;
-            Debug.Log("스킬이 활성회됨");
+            skill.skillLevel++; // 이미 존재하는 경우 레벨 증가
+            Debug.Log($"{skill.SkillName} 스킬 레벨 업! 현재 레벨: {skill.skillLevel}");
+            return;
         }
-        else
+
+        BaseSkill newSkill = Instantiate(skill, player); // 새 인스턴스 생성
+        activeSkills.Add(newSkill);
+
+        if (!newSkill.gameObject.activeSelf)
+            newSkill.gameObject.SetActive(true);
+
+        // 기존 코루틴이 있으면 중지 후 새로 시작
+        if (skillCoroutines.ContainsKey(newSkill))
         {
-            skill.skillLevel++;
+            StopCoroutine(skillCoroutines[newSkill]);
+            skillCoroutines.Remove(newSkill);
         }
+
+        Coroutine skillRoutine = StartCoroutine(SkillRoutine(newSkill));
+        skillCoroutines[newSkill] = skillRoutine;
+
+        Debug.Log($"{newSkill.SkillName} 스킬이 활성화됨!");
     }
 
-    public void ResgisterSkills(Item item)
+    
+
+    public void ApplySkillReward(SkillReward skillReward)
     {
-        if (item.skill == null) return;
+        if (skillReward == null || skillReward.skillPrefab == null) return;
 
-        if (!HasSkill(item.skill))
+        // 중복 체크 후 availableSkills 리스트에 추가
+        if (!availableSkills.Exists(s => s.skillPrefab.SkillName == skillReward.skillPrefab.SkillName))
         {
-            AddSkill(item.skill);
-            Debug.Log($"{item.itemName}의 스킬이 등록");
+            availableSkills.Add(skillReward);
+            Debug.Log($"{skillReward.rewardName} 적용: {skillReward.skillPrefab.SkillName} 스킬 추가됨!");
         }
-        else
-        {
-            Debug.LogWarning($"{item.itemName}의 스킬이 이미 활성화가 되어있씁니다.");
-        }
+        AddSkill(skillReward.skillPrefab);
     }
 
-    // 스킬이 제거되면 스킬루틴을 멈추고 리스트에서 제거
     public void RemoveSkill(BaseSkill skill)
     {
-        if (activeSkill.Contains(skill))
+        if (activeSkills.Contains(skill))
         {
-            activeSkill.Remove(skill);
+            activeSkills.Remove(skill);
 
             if (skillCoroutines.ContainsKey(skill))
             {
@@ -154,22 +98,13 @@ public class SkillManager : MonoBehaviour
                 skillCoroutines.Remove(skill);
             }
 
-            Debug.Log("스킬이 제거되었습니다.");
-        }
-    }
-
-    public void RemoveSkills(Item item)
-    {
-        BaseSkill skill = item.GetComponent<BaseSkill>();
-        if (skill != null)
-        {
-            RemoveSkill(skill);
+            Destroy(skill.gameObject); // 인스턴스 삭제
+            Debug.Log($"{skill.SkillName} 스킬이 제거되었습니다.");
         }
     }
 
     public bool HasSkill(BaseSkill skill)
     {
-        return activeSkill.Contains(skill);
+        return activeSkills.Exists(s => s.SkillName == skill.SkillName);
     }
-
 }
