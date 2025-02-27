@@ -1008,6 +1008,10 @@ MonoBehaviour:
   RequiredItem: 
   projectilePrefab: {fileID: 6610975837752573207, guid: 2eb24e9f2cd459e4daf829adca1d91f3, type: 3}
   projectileSpeed: 5
+  projectileSize: 0.5
+  projectileCount: 1
+  projectileInterval: 0.3
+  ispierce: 1
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -10303,6 +10307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
+  - {fileID: 6401412441340689401, guid: 9661a993d4394f1499a8286734914431, type: 3}
   - {fileID: 3652378525465268157, guid: c1a9332ad6a27d94bbb0571c663fdd5f, type: 3}
   - {fileID: 3652378525465268157, guid: 5d05b516c09d5b04da6e931a88516a86, type: 3}
   - {fileID: 3652378525465268157, guid: 79fce497de22762428daba870f6a82fd, type: 3}
