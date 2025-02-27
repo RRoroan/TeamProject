@@ -76,7 +76,7 @@ public class BaseController : MonoBehaviour
 
     }
 
-    protected void Movement(Vector2 direction)
+    protected virtual void Movement(Vector2 direction)
     {
         direction = direction * statHandler.Speed;
         if (knockbackDuration > 0f)
@@ -91,12 +91,12 @@ public class BaseController : MonoBehaviour
 
     protected void Rotate(Vector2 direction)
     {
-        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
+        float rotz = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
        
         float t = 10f;
 
         transform.rotation = Quaternion.Lerp(
-            transform.rotation, Quaternion.Euler(0,0,rotZ), Time.deltaTime * t);
+            transform.rotation, Quaternion.Euler(0,0,rotz), Time.deltaTime * t);
 
         //if (weaponPivot != null)
         //{
@@ -154,7 +154,7 @@ public class BaseController : MonoBehaviour
             component.enabled = false;
         }
 
-        Destroy(gameObject, 2f);
+        Destroy(gameObject);
 
     }
 }

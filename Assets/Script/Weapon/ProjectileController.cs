@@ -22,12 +22,14 @@ public class ProjectileController : MonoBehaviour
     public bool fxOnDestroy = true;
 
     ProjectileManager projectileManager;
+    private ProjectileAnimationHandler projectileAnimationHandler;
 
     private void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _rigidbody = GetComponent<Rigidbody2D>();
         pivot = transform.GetChild(0);
+        projectileAnimationHandler = GetComponent<ProjectileAnimationHandler>();
     }
 
     private void Update()
@@ -49,6 +51,16 @@ public class ProjectileController : MonoBehaviour
     {
         int collidedLayer = collision.gameObject.layer;
         if (collidedLayer == LayerMask.NameToLayer("PlayerProjectile") && gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
+        {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+            return;
+        }
+        if (collidedLayer == LayerMask.NameToLayer("EnemyProjectile") && gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
+        {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+            return;
+        }
+        if (collidedLayer == LayerMask.NameToLayer("PlayerProjectile") && gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
         {
             Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
             return;
@@ -75,7 +87,14 @@ public class ProjectileController : MonoBehaviour
             }
             else
             {
-                DestroyProjectile(collision.contacts[0].point - direction * .2f);
+                if (projectileAnimationHandler != null)
+                {
+                    projectileAnimationHandler.PlayDestroyAnimation();
+                }
+                else
+                {
+                    DestroyProjectile(collision.contacts[0].point - direction * .2f);
+                }
             }
         }
         else if (rangeWeaponHandler.target.value == (rangeWeaponHandler.target.value | (1 << collision.gameObject.layer)))
@@ -83,7 +102,7 @@ public class ProjectileController : MonoBehaviour
             ResourceController resourceController = collision.gameObject.GetComponent<ResourceController>();
             if (resourceController != null)
             {
-                resourceController.ChangeHealth(-5);
+                resourceController.ChangeHealth(-rangeWeaponHandler.Damage);
                 if (rangeWeaponHandler.IsOnKnockback)
                 {
                     BaseController controller = collision.gameObject.GetComponent<BaseController>();
@@ -93,7 +112,14 @@ public class ProjectileController : MonoBehaviour
                     }
                 }
             }
-            DestroyProjectile(collision.contacts[0].point);
+            if (projectileAnimationHandler != null)
+            {
+                projectileAnimationHandler.PlayDestroyAnimation();
+            }
+            else
+            {
+                DestroyProjectile(collision.contacts[0].point);
+            }
         }
     }
 

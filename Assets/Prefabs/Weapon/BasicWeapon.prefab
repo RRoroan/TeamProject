@@ -133,6 +133,7 @@ MonoBehaviour:
   statHandler: {fileID: 0}
   attackRange: 10
   speed: 1
+  damage: 5
   target:
     serializedVersion: 2
     m_Bits: 128
@@ -141,6 +142,7 @@ MonoBehaviour:
   isOnKnockback: 0
   knockbackPower: 1
   knockbackTime: 1
+  attackSoundClip: {fileID: 8300000, guid: b094b7ab8b6abc2478f71d8224a40954, type: 3}
   projectileSpawnPosition: {fileID: 3459966257844306314}
   maxBounces: 0
   buleetSize: 1

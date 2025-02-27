@@ -133,11 +133,12 @@ MonoBehaviour:
   statHandler: {fileID: 0}
   attackRange: 5
   speed: 1
+  damage: 1
   target:
     serializedVersion: 2
     m_Bits: 64
   delay: 1
-  bulletIndex: 1
+  bulletIndex: 2
   isOnKnockback: 0
   knockbackPower: 1
   knockbackTime: 1

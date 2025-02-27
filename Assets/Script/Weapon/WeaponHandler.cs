@@ -10,9 +10,11 @@ public class WeaponHandler : MonoBehaviour
 
     [Header("Attack Info")]
     [SerializeField] private float speed = 1f;
+    [SerializeField] private float damage = 1f;
     public float Speed { get => speed; set => speed = value; }
     public float AttackRange { get => attackRange; set => attackRange = value; }
-    
+    public float Damage { get => damage; set => damage = value; }
+
 
     public LayerMask target;
 
@@ -33,6 +35,7 @@ public class WeaponHandler : MonoBehaviour
     [SerializeField] private float knockbackTime = 0.5f;
     public float KnockbackTime { get => knockbackTime; set => knockbackTime = value; }
 
+    public AudioClip attackSoundClip;
     public BaseController Controller { get; private set; }
 
 
@@ -54,7 +57,8 @@ public class WeaponHandler : MonoBehaviour
 
     public virtual void Attack()
     {
-
+        if(attackSoundClip)
+            SoundManager.PlayClip(attackSoundClip);
     }
 
     protected virtual void Rotate(bool isLeft)
