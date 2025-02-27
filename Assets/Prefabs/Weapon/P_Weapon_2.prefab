@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 102
-  m_Sprite: {fileID: 21300000, guid: ad08b71cb82bbcc48aea8ca41dbaf499, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ed6e44a667713224890daf3c206073ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2770486124604673336}
   - component: {fileID: 6767738154937878840}
   m_Layer: 0
-  m_Name: BasicWeapon 2
+  m_Name: P_Weapon_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
