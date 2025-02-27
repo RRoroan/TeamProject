@@ -40,7 +40,7 @@ public class RotatingSkill : BaseSkill
     {
         if (!gameObject.activeSelf)
         {
-            Debug.LogError($"UseSkill: {SkillName} 오브젝트가 비활성화 상태여서 실행 불가능!");
+            Debug.LogError($"UseSkill: {SkillName} 오브젝트가 비활성화 상태!");
             return;
         }
 
@@ -50,13 +50,9 @@ public class RotatingSkill : BaseSkill
 
     private IEnumerator SpawnWeapon()
     {
-        
 
-        foreach (GameObject weapon in activeWeapon)
-        {
-            Destroy(weapon);
-        }
-        activeWeapon.Clear();
+
+        ClearBeforeWeapon();
 
         // 간격이 일정하게 투사채를 배치
         float weaponInterval = 360f / projectileCount;
@@ -80,8 +76,12 @@ public class RotatingSkill : BaseSkill
 
         }
 
-        yield return new WaitForSeconds(lifetime);
-        ClearBeforeWeapon();
+        if (lifetime < cooldown)
+        {
+            yield return new WaitForSeconds(lifetime);
+            ClearBeforeWeapon();
+        }
+
 
 
     }

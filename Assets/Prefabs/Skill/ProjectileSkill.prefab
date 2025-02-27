@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1114958988575426351}
   - component: {fileID: 2186362063595319925}
-  - component: {fileID: 4668016822580712472}
   m_Layer: 0
-  m_Name: TestProjectile
+  m_Name: ProjectileSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,30 +45,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillLevel: 1
-  cooldown: 2
+  cooldown: 10
   SkillName: Projectile
   RequiredItem: 123
   projectilePrefab: {fileID: 6610975837752573207, guid: 2eb24e9f2cd459e4daf829adca1d91f3, type: 3}
   projectileSpeed: 5
   projectileSize: 0.5
-  projectileCount: 3
+  projectileCount: 1
   projectileInterval: 0.3
   ispierce: 1
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
---- !u!114 &4668016822580712472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2308503792717330318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04dd80aa8e185b0428847dc642516717, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemName: pro
-  description: asd
-  skill: {fileID: 2186362063595319925}

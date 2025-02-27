@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public Inventory inventory;
     public SkillManager skillManager;
 
     private void Awake()
@@ -16,7 +15,6 @@ public class Player : MonoBehaviour
         Item item = collision.GetComponent<Item>();
         if (item != null)
         {
-            inventory.Additem(item, this);
             Destroy(collision.gameObject);
         }
 

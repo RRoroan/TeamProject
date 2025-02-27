@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6469e2553765f734d9eb7fa3702d964f, type: 3}
-  m_Name: Bounce
+  m_Name: Stat_Projectile
   m_EditorClassIdentifier: 
-  rewardName: Bounce
+  rewardName: NumberofProjectile
   description: 
-  statName: Bounce
-  statIncrease: 1
+  statName: NumberOfProjectiles
+  statIncrease: 5
