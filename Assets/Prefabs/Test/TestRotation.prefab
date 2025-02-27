@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7795785351484035439}
   - component: {fileID: 5002764336844084066}
-  - component: {fileID: 7056925112237255691}
   m_Layer: 0
   m_Name: TestRotation
   m_TagString: Untagged
@@ -58,18 +57,3 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
---- !u!114 &7056925112237255691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1787407463676124458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc242451c9e340c46b6a2c565635578e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemName: RotationItem
-  description: 
-  skill: {fileID: 5002764336844084066}

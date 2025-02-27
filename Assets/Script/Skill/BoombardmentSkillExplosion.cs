@@ -12,10 +12,12 @@ public class BoombardmentSkillExplosion : MonoBehaviour
     [SerializeField] private float addDamage = 10f;
     // 총합 데미지
     private float damage;
+    private RangeWeaponHandler rangeWeaponHandler;
 
     private void Start()
     {
-        damage = (addDamage /*+ 플레이어 데미지*/) * 2;
+        rangeWeaponHandler = FindObjectOfType<RangeWeaponHandler>();
+        damage = (addDamage + rangeWeaponHandler.Damage) * 2;
     }
 
     public void Init(float radius, LayerMask enemy)
@@ -32,10 +34,11 @@ public class BoombardmentSkillExplosion : MonoBehaviour
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, explosionRadius, enemyLayer);
         foreach (Collider2D enemy in hitEnemies)
         {
-            ResourceController resource = new ResourceController();
+            ResourceController resource = enemy.GetComponent<ResourceController>();
             if (resource != null)
             {
                 resource.ChangeHealth(-damage);
+                Debug.Log($" {enemy.name}에게 {damage} 데미지 ");
             }
         }
 
