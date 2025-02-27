@@ -9,6 +9,8 @@ public class EnemyManager : MonoBehaviour
 
     [SerializeField]
     private List<GameObject> enemyPrefabs; // 생성할 적 프리팹 리스트
+    [SerializeField]
+    private GameObject bossPrefab; //생성할 보스
 
     [SerializeField]
     private List<Rect> spawnAreas; // 적을 생성할 영역 리스트
@@ -24,6 +26,8 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private float timeBetweenWaves = 1f;
 
     GameManager gameManager;
+    public bool bossroomCheck;
+ 
 
     private void Start()
     {
@@ -96,6 +100,16 @@ public class EnemyManager : MonoBehaviour
         enemyController.Init(this, gameManager.player.transform);
 
         activeEnemies.Add(enemyController);
+
+        //보스 생성 및 리스트에 추가
+        if (bossPrefab != null)
+        {
+            GameObject spawnedBoss = Instantiate(bossPrefab, new Vector3(0, 2.5f), Quaternion.identity);
+            EnemyController bossController = spawnedBoss.GetComponent<EnemyController>();
+            bossController.Init(this, gameManager.player.transform);
+
+            activeEnemies.Add(bossController);
+        }
     }
 
     public void RemoveEnemyOnDeath(EnemyController enemy)
