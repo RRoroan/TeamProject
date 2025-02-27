@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 102
-  m_Sprite: {fileID: 21300000, guid: 5b2af192e43865541b7b903aea0aad50, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ed6e44a667713224890daf3c206073ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2770486124604673336}
   - component: {fileID: 6767738154937878840}
   m_Layer: 0
-  m_Name: BasicWeapon
+  m_Name: P_Weapon_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   delay: 1
-  bulletIndex: 0
+  bulletIndex: 3
   isOnKnockback: 0
   knockbackPower: 1
   knockbackTime: 1
@@ -148,8 +148,8 @@ MonoBehaviour:
   buleetSize: 1
   duration: 20
   spread: 2
-  numberoProjectilesPerShot: 1
-  multipleProjectileAngle: 5
+  numberoProjectilesPerShot: 2
+  multipleProjectileAngle: 15
   projectileColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!1 &9199430103441503841
 GameObject:
