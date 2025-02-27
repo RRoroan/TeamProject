@@ -7,31 +7,26 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public PlayerController player { get; private set; }
-    public MapSizeDetecte mapSize { get; private set; }
     private ResourceController _playerResourceController;
+
+    public GameObject characterPrefab;
+    public GameObject playerCharacter;
 
     [SerializeField] private StatHandler statHandler;
 
-    private EnemyManager enemyManager;
-    public static bool isFirstLoading = true;
-
-    [SerializeField] private int currentWaveIndex = 0;
-
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
-        player = FindObjectOfType<PlayerController>();
-        player.Init(this);
 
-        mapSize = FindObjectOfType<MapSizeDetecte>();
-
-        //statHandler = GetComponent<StatHandler>();
-
-        enemyManager = GetComponentInChildren<EnemyManager>();
-        enemyManager.Init(this);
-
-        _playerResourceController = player.GetComponent<ResourceController>();
     }
 
     public StatHandler GetStatHandler()
@@ -41,37 +36,18 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if (isFirstLoading)
         {
-            StartGame();
+            if (playerCharacter == null)
+            {
+                playerCharacter = Instantiate(characterPrefab); 
+                DontDestroyOnLoad(playerCharacter); 
+            }
         }
-        else
-        {
-            isFirstLoading = true;
-        }
-    }
 
-    public void StartGame()
-    {
-        //uiManager.SetPlayGame();
-        StartNextWave();
-    }
+        player = playerCharacter.GetComponent<PlayerController>();
+        player.Init(this);
 
-    void StartNextWave()
-    {
-        currentWaveIndex += 1;
-        //uiManager.ChangeWave(currentWaveIndex);
-        enemyManager.StartWave(1 + currentWaveIndex*2);
-    }
-
-    public void EndOfWave()
-    {
-        StartNextWave();
-    }
-
-    public void GameOver()
-    {
-        enemyManager.StopWave();
-        //uiManager.SetGameOver();
+        _playerResourceController = player.GetComponent<ResourceController>();
     }
 }
+    
