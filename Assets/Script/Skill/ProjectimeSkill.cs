@@ -23,9 +23,6 @@ public class ProjectimeSkill : BaseSkill
     [Header("Å¸°Ù")]
     [SerializeField] private LayerMask enemyLayer;
 
-    [Header("ÅºµÎ ¼³Á¤")]
-    [SerializeField] private float arrivalTime = 2f;
-
     // ¸ðµç Åõ»çÃ¼ °¹¼ö
     private int AllproCount;
 
@@ -71,6 +68,7 @@ public class ProjectimeSkill : BaseSkill
     private void FireProjectile(Collider2D target)
     {
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+        projectile.transform.localScale = new Vector3(projectileSize, projectileSize, 1f);
         Rigidbody2D rigidbody = projectile.GetComponent<Rigidbody2D>();
 
         if (rigidbody != null)
@@ -108,6 +106,46 @@ public class ProjectimeSkill : BaseSkill
             }
         }
         return closetEnemy;
+
+    }
+
+    public override void SkillLevelUp()
+    {
+        base.SkillLevelUp();
+        if (skillLevel % 2 == 1)
+        {
+            if (projectileSize <= 2)
+            {
+                projectileSize = Mathf.Min(projectileSize + 0.02f, 2);
+            }
+            else
+            {
+                damage++;
+            }
+        }
+        else
+        {
+            if (cooldown >= 5)
+            {
+                cooldown = Mathf.Max(cooldown - 0.05f, 5);
+
+            }
+            else
+            {
+                damage++;
+            }
+        }
+        if (skillLevel % 3 == 0)
+        {
+            if (projectileCount > 10)
+            {
+                AllproCount = Mathf.Min(AllproCount + 1, 11);
+
+            }
+            else
+                damage++;
+        }
+        damage++;
 
     }
 

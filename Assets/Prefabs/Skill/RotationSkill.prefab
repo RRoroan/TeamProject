@@ -45,14 +45,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillLevel: 1
+  damage: 4
   cooldown: 5
   SkillName: Rotation
   RequiredItem: RotationSkill
   rotatingPrefab: {fileID: 504224244205965228, guid: 9e8e717d29542ed468544a3b5e3b10e1, type: 3}
   range: 2
-  rotationSpeed: 100
-  lifetime: 3
-  projectileCount: 3
+  rotationSpeed: 10
+  lifetime: 4
+  projectileCount: 1
   hitInterval: 1
   enemyLayer:
     serializedVersion: 2

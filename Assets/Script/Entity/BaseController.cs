@@ -24,16 +24,18 @@ public class BaseController : MonoBehaviour
     protected StatHandler statHandler;
 
 
-    [SerializeField] public WeaponHandler WeaponPrefab;
+    [SerializeField] protected WeaponHandler WeaponPrefab;
     protected WeaponHandler weaponHandler;
     protected bool readytoAttack;
     private float timeSinceLastAttack = float.MaxValue;
+    protected WeaponChanger weaponChanger;
 
     protected virtual void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         animationHandler = GetComponent<AnimationHandler>();
         statHandler = GetComponent<StatHandler>();
+        weaponChanger = GetComponent<WeaponChanger>();
 
         if (WeaponPrefab != null)
         {
