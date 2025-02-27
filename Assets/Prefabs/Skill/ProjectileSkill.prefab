@@ -45,11 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillLevel: 1
+  damage: 4
   cooldown: 10
   SkillName: Projectile
   RequiredItem: 123
   projectilePrefab: {fileID: 6610975837752573207, guid: 2eb24e9f2cd459e4daf829adca1d91f3, type: 3}
-  projectileSpeed: 5
+  projectileSpeed: 1
   projectileSize: 0.5
   projectileCount: 1
   projectileInterval: 0.3

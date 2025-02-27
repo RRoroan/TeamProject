@@ -14,12 +14,10 @@ public class BoombardmentSkill : BaseSkill
     // 스킬이 떨어질 범위
     [Header("포격 스킬 설정")]
     [SerializeField] private float minRange = 1f;
-    [SerializeField] private float maxRange = 6f;
+    [SerializeField] private float maxRange = 8f;
 
     //스킬 범위(포격 크기)
-    [SerializeField] private float skillSize = 0.5f;
-    // 사라질 시간
-    [SerializeField] private float lifetime = 1f;
+    [SerializeField] private float skillSize = 1.5f;
 
     [Header("타겟")]
     [SerializeField] private LayerMask enemyLayer;
@@ -53,10 +51,9 @@ public class BoombardmentSkill : BaseSkill
         BoombardmentSkillExplosion explosion = boombard.GetComponent<BoombardmentSkillExplosion>();
         if (explosion != null)
         {
-            explosion.Init(skillSize, enemyLayer, arrivalTime, randomPosition);
+            explosion.Init(damage, skillSize, enemyLayer, arrivalTime, randomPosition);
+            explosion.transform.rotation = explosion.RotateToTarget();
         }
-
-        Destroy(boombard, lifetime);
 
     }
 
@@ -92,6 +89,37 @@ public class BoombardmentSkill : BaseSkill
         // 스킬이 맵 밖을 안나가도록 조정
         return (position.x >= mapMinBounds.x + skillSize) && (position.x <= mapMaxBounds.x - skillSize)
             && (position.y >= mapMinBounds.y + skillSize) && (position.y <= mapMaxBounds.y - skillSize);
+    }
+
+    public override void SkillLevelUp()
+    {
+        base.SkillLevelUp();
+        if (skillLevel % 2 == 1)
+        {
+            if (skillSize < 5)
+            {
+                skillSize += 0.25f;
+            }
+            else
+            {
+                damage++;
+            }
+        }
+        else
+        {
+            if (cooldown > 2)
+            {
+
+                cooldown = Mathf.Max(cooldown - 0.5f, 2f);
+
+            }
+            else
+            {
+                damage++;
+            }
+        }
+        damage += 2;
+
     }
 
 }
