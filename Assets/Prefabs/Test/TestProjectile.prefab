@@ -51,6 +51,10 @@ MonoBehaviour:
   RequiredItem: 123
   projectilePrefab: {fileID: 6610975837752573207, guid: 2eb24e9f2cd459e4daf829adca1d91f3, type: 3}
   projectileSpeed: 5
+  projectileSize: 0.5
+  projectileCount: 3
+  projectileInterval: 0.3
+  ispierce: 1
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128

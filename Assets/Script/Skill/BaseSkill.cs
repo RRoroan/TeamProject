@@ -6,7 +6,6 @@ using UnityEngine;
 public abstract class BaseSkill : MonoBehaviour
 {
     public int skillLevel = 1;
-    [SerializeField] protected float damage = 0f;
     [SerializeField] protected float cooldown = 10;
     
 
