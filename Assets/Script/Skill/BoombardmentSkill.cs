@@ -40,7 +40,7 @@ public class BoombardmentSkill : BaseSkill
             return;
         }
 
-        Vector2 randomPosition = RandomBoombardPosition(player.transform.position);
+        Vector2 randomPosition = RandomBoombardPosition(playerController.transform.position);
         GameObject boombard = Instantiate(boombardPrefabs, randomPosition, Quaternion.identity);
         boombard.transform.localScale = new Vector3(skillSize, skillSize, 1f);
 
@@ -53,6 +53,7 @@ public class BoombardmentSkill : BaseSkill
         Destroy(boombard, lifetime);
 
     }
+
 
     private Vector2 RandomBoombardPosition(Vector2 playerPosition)
     {

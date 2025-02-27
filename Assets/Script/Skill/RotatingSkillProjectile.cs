@@ -55,13 +55,35 @@ public class RotatingSkillProjectile : MonoBehaviour
         transform.rotation = Quaternion.identity;
 
         attackTimer += Time.deltaTime;
-        if (attackTimer >= hitInterval)
-        {
-            Attack();
-            attackTimer = 0f;
-        }
 
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if ((enemyLayer.value & (1 << collision.gameObject.layer)) != 0)
+        {
+            if (attackTimer >= hitInterval)
+            {
+                attackTimer = 0f;
+                Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, 0.5f, enemyLayer);
+
+                foreach (Collider2D enemy in hitEnemies)
+                {
+                    if (CanAttack(enemy))
+                    {
+                        ResourceController resourceController = enemy.GetComponent<ResourceController>();
+                        if (resourceController != null)
+                        {
+                            resourceController.ChangeHealth(-damage);
+                            lastHitTime[enemy] = Time.time;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
 
     private Vector2 GetPositionAroundPlayer()
     {
@@ -71,24 +93,24 @@ public class RotatingSkillProjectile : MonoBehaviour
             Mathf.Sin(radius) * range);
     }
 
-    private void Attack()
-    {
-        // 현재 투사채 위치(transform.position), (탐색 반경), (적의 레이어)
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, 0.5f, enemyLayer);
+    //private void Attack()
+    //{
+    //    // 현재 투사채 위치(transform.position), (탐색 반경), (적의 레이어)
+    //    Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, 0.5f, enemyLayer);
 
-        foreach (Collider2D enemy in hitEnemies)
-        {
-            if (CanAttack(enemy))
-            {
-                ResourceController resourceController = enemy.GetComponent<ResourceController>();
-                if (resourceController != null)
-                {
-                    resourceController.ChangeHealth(-damage);
-                    lastHitTime[enemy] = Time.time;
-                }
-            }
-        }
-    }
+    //    foreach (Collider2D enemy in hitEnemies)
+    //    {
+    //        if (CanAttack(enemy))
+    //        {
+    //            ResourceController resourceController = enemy.GetComponent<ResourceController>();
+    //            if (resourceController != null)
+    //            {
+    //                resourceController.ChangeHealth(-damage);
+    //                lastHitTime[enemy] = Time.time;
+    //            }
+    //        }
+    //    }
+    //}
 
     // 중복방지(hitInterval로 타격간격 조정)
     private bool CanAttack(Collider2D enemy)

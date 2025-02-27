@@ -10,6 +10,8 @@ public class RewardManager : MonoBehaviour
     public Button[] rewardButtons;
 
     private RangeWeaponHandler playerWeaponHandler;
+    private SkillManager playerSkillManager;
+    
 
     private void Start()
     {
@@ -17,6 +19,7 @@ public class RewardManager : MonoBehaviour
         if (player != null)
         {
             playerWeaponHandler = player.GetComponentInChildren<RangeWeaponHandler>();
+            playerSkillManager = player.GetComponentInChildren<SkillManager>();
         }
     }
 
@@ -45,8 +48,15 @@ public class RewardManager : MonoBehaviour
 
     public void SelectReward(Reward reward)
     {
-        Debug.Log($"선택된 보상: {reward.rewardName}");
-        reward.ApplyReward(playerWeaponHandler);
+
+        if (reward is StatReward statReward)
+        {
+            statReward.ApplyReward(playerWeaponHandler);
+        }
+        else if (reward is SkillReward skillReward)
+        {
+            playerSkillManager.ApplySkillReward(skillReward);
+        }
         rewardPanel.SetActive(false);
     }
 }

@@ -87,7 +87,7 @@ public class ProjectimeSkill : BaseSkill
     private Collider2D FindClosetEnemy()
     {
         // 플레이어 주변 원형반경(플레이어 공격범위) 안에 있는 Collider2D를 찾아서 Collider2D 배열에 저장.
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(player.transform.position, statHandler.GetRange(), enemyLayer);
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(playerController.transform.position, statHandler.GetRange(), enemyLayer);
         // 최소 거리를 설정
         float minDistance = Mathf.Infinity;
         // 가장 가까운 적을 저장할 변수
