@@ -7,10 +7,14 @@ public class EnemyManager : MonoBehaviour
 {
     private Coroutine waveRoutine;
 
+    [Header("EnemyList")]
+
     [SerializeField]
     private List<GameObject> enemyPrefabs; // 생성할 적 프리팹 리스트
     [SerializeField]
     private GameObject bossPrefab; //생성할 보스
+
+    [Header("EnemySpawnArea")]
 
     [SerializeField]
     private List<Rect> spawnAreas; // 적을 생성할 영역 리스트
@@ -19,6 +23,7 @@ public class EnemyManager : MonoBehaviour
     private Color gizmoColor = new Color(1, 0, 0, 0.3f); // 기즈모 색상
 
     private List<EnemyController> activeEnemies = new List<EnemyController>(); // 현재 활성화된 적들
+    private EnemyController activeBoss = new EnemyController(); // 활성화된 보스
 
     private bool enemySpawnComplite;
 
@@ -26,12 +31,11 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private float timeBetweenWaves = 1f;
 
     GameManager gameManager;
-    public bool bossroomCheck;
  
 
     private void Start()
     {
-        StartWave(4);
+        //StartWave(4);
     }
 
     public void Init(GameManager gameManager)
@@ -43,7 +47,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (waveCount <= 0)
         {
-            //gameManager.EndOfWave();
+            gameManager.EndOfWave();
             return;
         }
 
@@ -70,6 +74,7 @@ public class EnemyManager : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenSpawns);
             SpawnRandomEnemy();
         }
+            SpawnBoss();
 
         enemySpawnComplite = true;
     }
@@ -100,16 +105,19 @@ public class EnemyManager : MonoBehaviour
         enemyController.Init(this, gameManager.player.transform);
 
         activeEnemies.Add(enemyController);
+    }
 
-        //보스 생성 및 리스트에 추가
-        if (bossPrefab != null)
-        {
-            GameObject spawnedBoss = Instantiate(bossPrefab, new Vector3(0, 2.5f), Quaternion.identity);
-            EnemyController bossController = spawnedBoss.GetComponent<EnemyController>();
-            bossController.Init(this, gameManager.player.transform);
+    private void SpawnBoss()
+    {
+        if (bossPrefab == null)
+            return;
 
-            activeEnemies.Add(bossController);
-        }
+        //보스 생성 및 변수에 추가
+        GameObject spawnedBoss = Instantiate(bossPrefab, new Vector3(0, 2.5f), Quaternion.identity);
+        EnemyController bossController = spawnedBoss.GetComponent<EnemyController>();
+        bossController.Init(this, gameManager.player.transform);
+
+        activeBoss = bossController;
     }
 
     public void RemoveEnemyOnDeath(EnemyController enemy)
@@ -117,9 +125,12 @@ public class EnemyManager : MonoBehaviour
         activeEnemies.Remove(enemy);
         if (enemySpawnComplite && activeEnemies.Count == 0)
         {
-            //gameManager.EndOfWave();
+            Debug.Log("다음 웨이브");
+            gameManager.EndOfWave();
         }
+
     }
+
     private void OnDrawGizmosSelected()
     {
         if (spawnAreas == null) return;
