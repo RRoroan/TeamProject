@@ -138,7 +138,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   delay: 1
-  bulletIndex: 0
+  bulletIndex: 3
   isOnKnockback: 0
   knockbackPower: 1
   knockbackTime: 1
@@ -148,8 +148,8 @@ MonoBehaviour:
   buleetSize: 1
   duration: 20
   spread: 2
-  numberoProjectilesPerShot: 1
-  multipleProjectileAngle: 5
+  numberoProjectilesPerShot: 2
+  multipleProjectileAngle: 15
   projectileColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!1 &9199430103441503841
 GameObject:

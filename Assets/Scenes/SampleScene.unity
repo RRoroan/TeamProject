@@ -8886,6 +8886,7 @@ MonoBehaviour:
   - {fileID: 5824419717889186750, guid: 35a8912531c17a745b449d3071809543, type: 3}
   - {fileID: 5824419717889186750, guid: ae9a7adfdd4b4c34f8f45c259baa8294, type: 3}
   - {fileID: 7022331629083659171, guid: b375f0b91ad7a394199a0266bd8faa04, type: 3}
+  - {fileID: 5824419717889186750, guid: 76134a2ffbed39845ae377ef21b23f08, type: 3}
   impactParticleSystem: {fileID: 0}
 --- !u!1 &1465241052
 GameObject:
