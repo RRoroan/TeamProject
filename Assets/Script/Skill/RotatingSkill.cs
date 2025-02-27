@@ -60,16 +60,16 @@ public class RotatingSkill : BaseSkill
         for (int i = 0; i < projectileCount; i++)
         {
             float angle = i * weaponInterval;
-            Vector2 spawnPosition = (Vector2)player.transform.position + GetPositionAngle(angle);
+            Vector2 spawnPosition = (Vector2)playerController.transform.position + GetPositionAngle(angle);
 
 
             GameObject weapon = Instantiate(rotatingPrefab, spawnPosition, Quaternion.identity);
-            weapon.transform.parent = player.transform;
+            weapon.transform.parent = playerController.transform;
 
             RotatingSkillProjectile controller = weapon.GetComponent<RotatingSkillProjectile>();
             if (controller != null)
             {
-                controller.Init(player.transform, range, angle, rotationSpeed, hitInterval, enemyLayer);
+                controller.Init(playerController.transform, range, angle, rotationSpeed, hitInterval, enemyLayer);
             }
 
             activeWeapon.Add(weapon);
