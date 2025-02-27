@@ -139,7 +139,7 @@ public class ProjectimeSkill : BaseSkill
         {
             if (projectileCount > 10)
             {
-                projectileCount = Mathf.Min(projectileCount + 1, 11);
+                AllproCount = Mathf.Min(AllproCount + 1, 11);
 
             }
             else
