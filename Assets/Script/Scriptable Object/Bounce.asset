@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Bounce
   m_EditorClassIdentifier: 
   rewardName: Bounce
-  description: bounce
+  description: 
   statName: Bounce
   statIncrease: 1
