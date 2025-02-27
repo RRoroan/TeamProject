@@ -11,15 +11,24 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 5400676a307212e48bdf10a3e3e98e62
+  - enabled: 1
+    path: Assets/Scenes/Customizing.unity
+    guid: 7e5810b7f2e21ae4ab517d0709ec2f78
   - enabled: 0
     path: Assets/Scenes/Shop.unity
     guid: 1a9520cba854fdf47945d591a67ef5c4
   - enabled: 0
     path: Assets/Scenes/Chalinge.unity
     guid: d6d9e4c017ba5b944aff01c1d0cf324a
+  - enabled: 0
+    path: Assets/Scenes/1.unity
+    guid: 516c5624d123a91448f8b738765dbdfe
   - enabled: 1
     path: Assets/Scenes/Stage1_1.unity
-    guid: 516c5624d123a91448f8b738765dbdfe
+    guid: 5f8ad23dee9c5dc42843576721cf3000
+  - enabled: 1
+    path: Assets/Scenes/Stage1_Boss.unity
+    guid: 1df4b9dfb2439b04d9e40ebdab65bde9
   - enabled: 1
     path: Assets/Scenes/Stage2_1.unity
     guid: c25e19da266210148bcf4937732d7985

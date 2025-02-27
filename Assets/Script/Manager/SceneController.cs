@@ -43,8 +43,13 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene($"Stage{stageNum.ToString()}_{subNum.ToString()}");
     }
 
+    public void BossStage(int stageNum, string bossroom)
+    {
+        SceneManager.LoadScene($"Stage{stageNum.ToString()}_{bossroom}");
+    }
+
     public void Customizing()
     {
-        SceneManager.LoadScene("Costomizing");
+        SceneManager.LoadScene("Customizing");
     }
 }
