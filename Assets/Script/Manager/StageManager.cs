@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StageManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class StageManager : MonoBehaviour
     private EnemyManager enemyManager;
     public static bool isFirstLoading = true;
 
-    [SerializeField] private int currentWaveIndex = 0;
+    [SerializeField] public static int currentWaveIndex = 0;
 
     // Start is called before the first frame update
     void Awake()
@@ -50,30 +51,43 @@ public class StageManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void StartGame()
     {
-        //uiManager.SetPlayGame();
         StartNextWave();
     }
 
     void StartNextWave()
     {
-        currentWaveIndex += 1;
-        //uiManager.ChangeWave(currentWaveIndex);
+        Debug.Log($"Index : {currentWaveIndex}");
         enemyManager.StartWave(1 + currentWaveIndex * 2);
+
     }
 
     public void EndOfWave()
     {
-        StartNextWave();
+        currentWaveIndex += 1;
+
+        if (currentWaveIndex < 5)
+        {
+            StartNextWave();
+        }
+        else if (currentWaveIndex == 5)
+        {
+            SceneController.Instance.BossStage(1, "Boss");
+        }
+        else
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+
     }
 
     public void GameOver()
     {
         enemyManager.StopWave();
-        //uiManager.SetGameOver();
+        SceneController.Instance.StartGame();
     }
 }
