@@ -53,15 +53,28 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        //uiManager.SetPlayGame();
         StartNextWave();
     }
 
     void StartNextWave()
     {
-        currentWaveIndex += 1;
-        //uiManager.ChangeWave(currentWaveIndex);
-        enemyManager.StartWave(1 + currentWaveIndex*2);
+        if (currentWaveIndex < 5)
+        {
+            currentWaveIndex += 1;
+
+            enemyManager.StartWave(1 + currentWaveIndex * 2);
+        }
+        else if (currentWaveIndex == 5)
+        {
+            SceneController.Instance.BossStage(1, "Boss");
+        }
+        else
+        {
+            Debug.Log("다음 웨이브로 넘어갈 수 없습니다.");
+        }
+        
+
+
     }
 
     public void EndOfWave()
@@ -72,6 +85,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         enemyManager.StopWave();
-        //uiManager.SetGameOver();
+        SceneController.Instance.StartGame();
+
     }
 }
