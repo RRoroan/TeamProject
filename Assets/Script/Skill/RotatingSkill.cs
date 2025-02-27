@@ -103,4 +103,39 @@ public class RotatingSkill : BaseSkill
         activeWeapon.Clear();
     }
 
+    public override void SkillLevelUp()
+    {
+        base.SkillLevelUp();
+        
+        if (skillLevel % 2 == 1)
+        {
+            if (lifetime <= cooldown)
+            {
+                lifetime += 0.5f;
+
+            }
+            else
+            {
+                damage++;
+            }
+        }
+        if (skillLevel % 3 == 0)
+        {
+            projectileCount++;
+        }
+        if (skillLevel % 5 == 0)
+        {
+            rotationSpeed += 10;
+            if (hitInterval <= 0.1f)
+            {
+                hitInterval = Mathf.Max(hitInterval - 0.05f, 0.1f);
+
+            }
+            damage += 3;
+        }
+
+        damage++;
+
+    }
+
 }

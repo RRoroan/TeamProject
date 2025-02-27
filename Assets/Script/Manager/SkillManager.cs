@@ -47,7 +47,7 @@ public class SkillManager : MonoBehaviour
     {
         if (HasSkill(skill))
         {
-            skill.skillLevel++; // 이미 존재하는 경우 레벨 증가
+            skill.SkillLevelUp(); // 이미 존재하는 경우 레벨 증가
             Debug.Log($"{skill.SkillName} 스킬 레벨 업! 현재 레벨: {skill.skillLevel}");
             return;
         }

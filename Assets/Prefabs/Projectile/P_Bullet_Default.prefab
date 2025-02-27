@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6450842317840982169}
   - component: {fileID: 16126078984476736}
-  - component: {fileID: 2214138439978437076}
   m_Layer: 11
   m_Name: BulletRenderer
   m_TagString: Untagged
@@ -85,27 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &2214138439978437076
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 80841454559688525}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 05be65d6894be8144b0a3bcf259a41c9, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5824419717889186750
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,9 +96,8 @@ GameObject:
   - component: {fileID: 7898602741290046078}
   - component: {fileID: 1725383109499911283}
   - component: {fileID: 5337652048919849711}
-  - component: {fileID: -1320188267742119247}
   m_Layer: 11
-  m_Name: P_Tank_ExplosionBullet
+  m_Name: P_Bullet_Default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,18 +197,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.2
---- !u!114 &-1320188267742119247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5824419717889186750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 288499c49bb042d4e90a98683aafeced, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6978974898148238397
 GameObject:
   m_ObjectHideFlags: 0

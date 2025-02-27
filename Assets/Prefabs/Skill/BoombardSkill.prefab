@@ -45,14 +45,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillLevel: 1
-  cooldown: 5
+  cooldown: 20
   SkillName: Boombard
   RequiredItem: 
-  boombardPrefabs: {fileID: 1410301654886169098, guid: d62a774053565374ba765d50f4137494, type: 3}
+  boombardPrefabs: {fileID: 6140225396568831940, guid: ebf6eac7c8cdfd94b8524a70572b770c, type: 3}
   minRange: 1
-  maxRange: 6
-  skillSize: 3
-  lifetime: 1
+  maxRange: 8
+  skillSize: 1.5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
+  arrivalTime: 2

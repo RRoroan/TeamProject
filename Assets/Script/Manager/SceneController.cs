@@ -45,6 +45,6 @@ public class SceneController : MonoBehaviour
 
     public void Customizing()
     {
-        SceneManager.LoadScene("Costomizing");
+        SceneManager.LoadScene("Customizing");
     }
 }
