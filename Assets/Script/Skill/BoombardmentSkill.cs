@@ -64,6 +64,7 @@ public class BoombardmentSkill : BaseSkill
 
     }
 
+
     private Vector2 RandomBoombardPosition(Vector2 playerPosition)
     {
         Vector2 targetPosition;

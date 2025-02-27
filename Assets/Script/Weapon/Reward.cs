@@ -7,5 +7,7 @@ public abstract class Reward : ScriptableObject
 {
     public string rewardName;
     public string description;
-    public abstract void ApplyReward(RangeWeaponHandler weaponHandler);
+    public virtual void ApplyReward(RangeWeaponHandler weaponHandler) { }
+    public virtual void ApplyReward(SkillManager skillManager) { }
+
 }
