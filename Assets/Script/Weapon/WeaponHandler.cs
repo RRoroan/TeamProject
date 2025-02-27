@@ -47,7 +47,7 @@ public class WeaponHandler : MonoBehaviour
 
     protected virtual void Start()
     {
-        statHandler = GameManager.Instance.GetStatHandler();
+        //statHandler = GameManager.Instance.GetStatHandler(); 
     }
 
     protected virtual void Update()
