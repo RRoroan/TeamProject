@@ -88,6 +88,8 @@ public class StageManager : MonoBehaviour
     public void GameOver()
     {
         enemyManager.StopWave();
+        enemyManager.activeEnemies = null;
+        enemyManager.activeBoss = null;
         SceneController.Instance.StartGame();
     }
 }

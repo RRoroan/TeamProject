@@ -22,8 +22,8 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]
     private Color gizmoColor = new Color(1, 0, 0, 0.3f); // 기즈모 색상
 
-    private List<EnemyController> activeEnemies = new List<EnemyController>(); // 현재 활성화된 적들
-    private EnemyController activeBoss = new EnemyController(); // 활성화된 보스
+    public List<EnemyController> activeEnemies = new List<EnemyController>(); // 현재 활성화된 적들
+    public EnemyController activeBoss = new EnemyController(); // 활성화된 보스
 
     private bool enemySpawnComplite;
 

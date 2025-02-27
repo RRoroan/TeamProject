@@ -96,8 +96,7 @@ public class PlayerController : BaseController
 
     public override void Death()
     {
-        base.Death();
-        stageManager.GameOver();
+        StageManager.Instance.GameOver();
         //if (resourceController.CurrentHealth <= 0f)
         //{
         //    gameManager.GameOver();

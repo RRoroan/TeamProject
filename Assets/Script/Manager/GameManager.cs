@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public PlayerController player { get; private set; }
-    private ResourceController _playerResourceController;
+    public ResourceController resourceController;
 
     public GameObject characterPrefab;
     public GameObject playerCharacter;
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         player = playerCharacter.GetComponent<PlayerController>();
         player.Init(this);
 
-        _playerResourceController = player.GetComponent<ResourceController>();
+        resourceController = player.GetComponent<ResourceController>();
     }
 }
     

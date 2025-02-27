@@ -16,6 +16,7 @@ public class MainMenuSceneController : MonoBehaviour
 
     void Start()
     {
+        GameManager.Instance.resourceController.CurrentHealth = GameManager.Instance.resourceController.MaxHealth;
         stageSelectButton.onClick.AddListener(OnStageSelectClicked);
         customizingButton.onClick.AddListener(OnCustomizingClicked);
         optionButton.onClick.AddListener(OnOptionClicked);
