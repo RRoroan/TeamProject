@@ -44,14 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7196d5502d3deda4fa1f400def87638e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillLevel: 1
-  damage: 4
-  cooldown: 10
+  skillLevel: 10
+  damage: 25
+  cooldown: 6
   SkillName: Projectile
   RequiredItem: 123
   projectilePrefab: {fileID: 6610975837752573207, guid: 2eb24e9f2cd459e4daf829adca1d91f3, type: 3}
   projectileSpeed: 1
-  projectileSize: 0.5
+  projectileSize: 1.0799999
   projectileCount: 1
   projectileInterval: 0.3
   ispierce: 1
