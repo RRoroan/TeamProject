@@ -9,7 +9,8 @@ using UnityEngine.UIElements;
 public class BoombardmentSkill : BaseSkill
 {
     // 포격 프리팹
-    [SerializeField] private GameObject boombardPrefabs;
+    [SerializeField] private GameObject boombardExplosion;
+    [SerializeField] private GameObject boombardRocket;
 
     // 스킬이 떨어질 범위
     [Header("포격 스킬 설정")]
@@ -30,6 +31,15 @@ public class BoombardmentSkill : BaseSkill
     protected override void Start()
     {
         base.Start();
+
+        if (boombardExplosion == null)
+        {
+            Debug.LogError("boombardExplosion이 없습니다.");
+        }
+        if (boombardRocket == null)
+        {
+            Debug.LogError("boombardRocket이 없습니다.");
+        }
     }
 
     public override void UseSkill()
@@ -41,7 +51,7 @@ public class BoombardmentSkill : BaseSkill
         }
 
         Vector2 randomPosition = RandomBoombardPosition(player.transform.position);
-        GameObject boombard = Instantiate(boombardPrefabs, randomPosition, Quaternion.identity);
+        GameObject boombard = Instantiate(boombardExplosion, randomPosition, Quaternion.identity);
         boombard.transform.localScale = new Vector3(skillSize, skillSize, 1f);
 
         BoombardmentSkillExplosion explosion = boombard.GetComponent<BoombardmentSkillExplosion>();
