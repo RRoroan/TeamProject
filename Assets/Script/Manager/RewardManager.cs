@@ -38,7 +38,6 @@ public class RewardManager : MonoBehaviour
             rewardButtons[i].onClick.RemoveAllListeners();
             rewardButtons[i].onClick.AddListener(() => SelectReward(reward));
         }
-        Time.timeScale = 1f;
     }
 
     private List<Reward> GetRandomRewards(int count)
@@ -60,5 +59,6 @@ public class RewardManager : MonoBehaviour
             playerSkillManager.ApplySkillReward(skillReward);
         }
         rewardPanel.SetActive(false);
+        Time.timeScale = 1f;
     }
 }
