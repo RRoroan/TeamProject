@@ -13,10 +13,21 @@ public class MainMenuSceneController : MonoBehaviour
     public Button closeOptionButton;
 
     public GameObject optionPanel;
+    public GameObject playerCharacter;
+    public GameObject hpBar;
+
+
+    private void Awake()
+    {
+        playerCharacter = GameManager.Instance.playerCharacter;
+        hpBar = playerCharacter.GetComponentInChildren<HpBarController>(true).gameObject;
+    }
 
     void Start()
     {
         GameManager.Instance.resourceController.CurrentHealth = GameManager.Instance.resourceController.MaxHealth;
+        hpBar.SetActive(true);
+        playerCharacter.transform.localScale = Vector3.one * 0.5f;
         stageSelectButton.onClick.AddListener(OnStageSelectClicked);
         customizingButton.onClick.AddListener(OnCustomizingClicked);
         optionButton.onClick.AddListener(OnOptionClicked);
