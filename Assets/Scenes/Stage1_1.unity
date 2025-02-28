@@ -182,7 +182,7 @@ MonoBehaviour:
   bossWarningTop: {fileID: 1503502307}
   bossWarningBottom: {fileID: 2092583746}
   bossWarningBoard: {fileID: 4167320}
-  bossWarningObject: {fileID: 0}
+  bossWarningObject: {fileID: 4167317}
   waveCount: 0
 --- !u!114 &4167320
 MonoBehaviour:
@@ -4820,7 +4820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95a853f8fd1fc74e9efa3ae079673e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveCountText: {fileID: 0}
+  waveCountText: {fileID: 1914037859}
   bossWarning: {fileID: 0}
   bossWarningTop: {fileID: 0}
   bossWarningBottom: {fileID: 0}

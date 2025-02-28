@@ -12,6 +12,7 @@ public class StageManager : MonoBehaviour
     private RewardManager rewardManager;
     private SkillManager skillManager;
     private RangeWeaponHandler weaponHandler;
+    private UIManager uIManager;
     public static bool isFirstLoading = true;
 
     [SerializeField] public static int currentWaveIndex = 0;
@@ -62,12 +63,14 @@ public class StageManager : MonoBehaviour
     public void StartGame()
     {
         StartNextWave();
+        
     }
 
     void StartNextWave()
     {
         Debug.Log($"Index : {currentWaveIndex}");
         enemyManager.StartWave(1 + currentWaveIndex * 2);
+        uIManager.UpWaveCount();
 
     }
 
@@ -82,6 +85,7 @@ public class StageManager : MonoBehaviour
         }
         else if (currentWaveIndex == 5)
         {
+            uIManager.BossWaveWarning();
             SceneController.Instance.BossStage(1, "Boss");
         }
         else
