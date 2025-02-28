@@ -9,8 +9,6 @@ public class SkillManager : MonoBehaviour
     public Transform player; // 플레이어의 Transform
     public List<SkillReward> availableSkills;
 
-
-
     private void Awake()
     {
 
@@ -27,7 +25,7 @@ public class SkillManager : MonoBehaviour
                 yield break;
             }
 
-            StartCoroutine(DelaySkill(nowSkill));
+            //StartCoroutine(DelaySkill(nowSkill));
 
             float cooldown = nowSkill.GetCooldown();
             if (cooldown <= 0)
@@ -37,15 +35,15 @@ public class SkillManager : MonoBehaviour
             }
 
             yield return new WaitForSeconds(nowSkill.GetCooldown());
-            if (nowSkill != null) nowSkill.UseSkill();
+            nowSkill.UseSkill();
         }
     }
 
-    private IEnumerator DelaySkill(BaseSkill skill)
-    {
-        yield return new WaitForSeconds(3f);
-        skill.UseSkill();
-    }
+    //private IEnumerator DelaySkill(BaseSkill skill)
+    //{
+    //    yield return new WaitForSeconds(3f);
+    //    skill.UseSkill();
+    //}
 
     public void AddSkill(BaseSkill skill)
     {

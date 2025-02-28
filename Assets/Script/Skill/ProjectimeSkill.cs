@@ -178,8 +178,13 @@ public class ProjectimeSkill : BaseSkill
     public IEnumerator RestartCoroutine()
     {
         yield return new WaitForSeconds((int)(cooldown / 2));
-        StopCoroutine(skillCoroutine);
-        skillCoroutine = null;
+
+        if (skillCoroutine != null)
+        {
+            StopCoroutine(skillCoroutine);
+            skillCoroutine = null;
+
+        }
         UseSkill();
     }
 
