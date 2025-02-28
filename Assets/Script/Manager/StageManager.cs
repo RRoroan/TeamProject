@@ -68,7 +68,7 @@ public class StageManager : MonoBehaviour
     {
         Debug.Log($"Index : {currentWaveIndex}");
         enemyManager.StartWave(1 + currentWaveIndex * 2);
-
+        
     }
 
     public void EndOfWave()
