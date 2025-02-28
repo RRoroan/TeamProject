@@ -24,6 +24,7 @@ public class StageManager : MonoBehaviour
         mapSize = FindObjectOfType<MapSizeDetecte>();
 
         //statHandler = GetComponent<StatHandler>();
+        uIManager = FindObjectOfType<UIManager>();
         weaponHandler = FindObjectOfType<RangeWeaponHandler>();
         skillManager = FindObjectOfType<SkillManager>();
         rewardManager = GetComponentInChildren<RewardManager>();
@@ -62,6 +63,11 @@ public class StageManager : MonoBehaviour
 
     public void StartGame()
     {
+        if (currentWaveIndex == 5)
+        {
+            uIManager.BossWaveWarning();
+        }
+
         StartNextWave();
         
     }
@@ -81,11 +87,11 @@ public class StageManager : MonoBehaviour
         if (currentWaveIndex < 5)
         {
             rewardManager.ShowRewards();
+
             StartNextWave();
         }
         else if (currentWaveIndex == 5)
         {
-            uIManager.BossWaveWarning();
             SceneController.Instance.BossStage(1, "Boss");
         }
         else

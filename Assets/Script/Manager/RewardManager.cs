@@ -25,6 +25,7 @@ public class RewardManager : MonoBehaviour
 
     public void ShowRewards()
     {
+        Time.timeScale = 0f;
         rewardPanel.SetActive(true);
         List<Reward> chosenRewards = GetRandomRewards(3);
 
@@ -37,6 +38,7 @@ public class RewardManager : MonoBehaviour
             rewardButtons[i].onClick.RemoveAllListeners();
             rewardButtons[i].onClick.AddListener(() => SelectReward(reward));
         }
+        Time.timeScale = 1f;
     }
 
     private List<Reward> GetRandomRewards(int count)
