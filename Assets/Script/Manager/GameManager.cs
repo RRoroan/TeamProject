@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject characterPrefab;
     public GameObject playerCharacter;
 
-    [SerializeField] private StatHandler statHandler;
+    private StatHandler statHandler;
 
     private void Awake()
     {
@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
         player.Init(this);
 
         resourceController = player.GetComponent<ResourceController>();
+
+        statHandler = player.GetComponent<StatHandler>();
     }
 }
     
