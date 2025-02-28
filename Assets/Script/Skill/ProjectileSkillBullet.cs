@@ -11,7 +11,7 @@ public class ProjectileSkillBullet : MonoBehaviour
     private Vector2 mapMaxBounds;
 
     // 총합 대미지(플레이어 공격력 + addDamage)
-    private float damage;
+    private float damage = 0;
     private LayerMask enemyLayer;
     private bool isPierce;
 

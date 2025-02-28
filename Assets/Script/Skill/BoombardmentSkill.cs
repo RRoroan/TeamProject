@@ -11,6 +11,13 @@ public class BoombardmentSkill : BaseSkill
     // 포격 프리팹
     [SerializeField] private GameObject boombardPrefabs;
 
+
+    [Header("타겟")]
+    [SerializeField] private LayerMask enemyLayer;
+
+    [Header("탄두 설정")]
+    [SerializeField] private float arrivalTime = 2f;
+
     // 스킬이 떨어질 범위
     [Header("포격 스킬 설정")]
     [SerializeField] private float minRange = 1f;
@@ -18,12 +25,6 @@ public class BoombardmentSkill : BaseSkill
 
     //스킬 범위(포격 크기)
     [SerializeField] private float skillSize = 1.5f;
-
-    [Header("타겟")]
-    [SerializeField] private LayerMask enemyLayer;
-
-    [Header("탄두 설정")]
-    [SerializeField] private float arrivalTime = 2f;
 
 
 
