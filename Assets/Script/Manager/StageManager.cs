@@ -9,6 +9,9 @@ public class StageManager : MonoBehaviour
     public MapSizeDetecte mapSize { get; private set; }
 
     private EnemyManager enemyManager;
+    private RewardManager rewardManager;
+    private BaseSkill baseSkill;
+    private SkillManager skillManager;
     public static bool isFirstLoading = true;
 
     [SerializeField] public static int currentWaveIndex = 0;
@@ -21,6 +24,8 @@ public class StageManager : MonoBehaviour
 
         //statHandler = GetComponent<StatHandler>();
 
+        skillManager = FindObjectOfType<SkillManager>();
+        rewardManager = GetComponentInChildren<RewardManager>();
         enemyManager = GetComponentInChildren<EnemyManager>();
         enemyManager.Init(StageManager.Instance);
     }
@@ -32,9 +37,9 @@ public class StageManager : MonoBehaviour
 
         // 가져온 캐릭터에 대해 추가 작업을 할 수 있습니다
         // 예: 캐릭터의 위치를 스테이지에 맞게 설정
-        if (player != null)
+        if (player != null && currentWaveIndex < 5)
         {
-            // 예시: 캐릭터의 위치를 변경
+            // 예시: 캐릭터의 위치를 초기화
             player.transform.position = new Vector3(0, 0, 0);
         }
 
@@ -72,6 +77,7 @@ public class StageManager : MonoBehaviour
 
         if (currentWaveIndex < 5)
         {
+            rewardManager.ShowRewards();
             StartNextWave();
         }
         else if (currentWaveIndex == 5)
@@ -90,6 +96,7 @@ public class StageManager : MonoBehaviour
         enemyManager.StopWave();
         enemyManager.activeEnemies = null;
         enemyManager.activeBoss = null;
+        skillManager.RemoveSkill(baseSkill);
         SceneController.Instance.StartGame();
     }
 }
