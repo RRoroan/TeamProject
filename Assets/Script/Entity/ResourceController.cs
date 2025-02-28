@@ -13,7 +13,7 @@ public class ResourceController : MonoBehaviour
 
     private float timeSinceLastChange = float.MaxValue;
 
-    public float CurrentHealth { get; private set; } //현재 체력 수치
+    public float CurrentHealth { get; set; } //현재 체력 수치
     public float CurrentSpeed { get; private set; } //현재 속도 수치
     public float CurrentRange { get; private set; } //현재 사거리 수치
     public float CurrentAttackSpeed { get; private set; } //현재 공격속도 수치

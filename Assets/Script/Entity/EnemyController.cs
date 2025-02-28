@@ -45,8 +45,16 @@ public class EnemyController : BaseController
             }
         }
 
-        float distance = DistanceToTarget();
-        Vector2 direction = DirectionToTarget();
+        float distance = 0;
+        Vector2 direction = Vector2.zero;
+
+        if (target != null)
+        {
+            distance = DistanceToTarget();
+            direction = DirectionToTarget();
+        }
+
+        
 
         isAttacking = false;
 

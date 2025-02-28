@@ -34,7 +34,7 @@ public abstract class BaseSkill : MonoBehaviour
     protected virtual void Start()
     {
         statHandler = GameManager.Instance.GetStatHandler();
-        mapSize = GameManager.Instance.mapSize;
+        mapSize = StageManager.Instance.mapSize;
         firePoint = playerController.transform;
 
         // ¸ÊÀÇ ÁÂÇÏ´Ü ÁÂÇ¥

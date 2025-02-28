@@ -18,7 +18,7 @@ public class ProjectileSkillBullet : MonoBehaviour
 
     private void Start()
     {
-        mapSize = GameManager.Instance.mapSize;
+        mapSize = StageManager.Instance.mapSize;
         // ¸ÊÀÇ ÁÂÇÏ´Ü ÁÂÇ¥
         mapMinBounds = mapSize.GetMinBounds();
         // ¸ÊÀÇ ¿ì»ó´Ü ÁÂÇ¥
