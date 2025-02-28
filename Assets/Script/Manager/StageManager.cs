@@ -97,7 +97,7 @@ public class StageManager : MonoBehaviour
         enemyManager.activeEnemies = null;
         enemyManager.activeBoss = null;
         skillManager.ResetSkill();
-        weaponHandler. ResetStat();
+        weaponHandler.ResetStat();
         SceneController.Instance.StartGame();
     }
 }
