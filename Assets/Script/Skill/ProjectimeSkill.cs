@@ -23,13 +23,15 @@ public class ProjectimeSkill : BaseSkill
     [Header("타겟")]
     [SerializeField] private LayerMask enemyLayer;
 
+    Coroutine skillCoroutine;
+
     // 모든 투사체 갯수
-    private int AllproCount;
+    private int allProCount;
 
     protected override void Start()
     {
         base.Start();
-        AllproCount = projectileCount + statHandler.GetProjectileCount();
+        allProCount = GetCurrentProjectileCount();
     }
 
 
@@ -40,21 +42,29 @@ public class ProjectimeSkill : BaseSkill
             Debug.LogError($"UseSkill: {SkillName} 오브젝트가 비활성화 상태여서 실행 불가능!");
             return;
         }
+        if (skillCoroutine != null)
+        {
+            StopCoroutine(skillCoroutine);
+            skillCoroutine = null;
+        }
 
-        StartCoroutine(FireProjectiles());
+        skillCoroutine = StartCoroutine(FireProjectiles());
       
     }
 
     private IEnumerator FireProjectiles()
     {
-        AllproCount = projectileCount + statHandler.GetProjectileCount();
-        for (int i = 0; i < AllproCount; i++)
+        int totalProjectileCount = GetCurrentProjectileCount();
+        for (int i = 0; i < totalProjectileCount; i++)
         {
+            float currentProjectileSize = projectileSize;
+            int currentDamage = damage;
+
             Collider2D target = FindClosetEnemy();
 
             if (target != null)
             {
-                FireProjectile(target);
+                FireProjectile(target, currentDamage, currentProjectileSize);
             }
             else
             {
@@ -65,10 +75,10 @@ public class ProjectimeSkill : BaseSkill
 
     }
 
-    private void FireProjectile(Collider2D target)
+    private void FireProjectile(Collider2D target, int _damage, float _skillSize)
     {
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-        projectile.transform.localScale = new Vector3(projectileSize, projectileSize, 1f);
+        projectile.transform.localScale = new Vector3(_skillSize, _skillSize, 1f);
         Rigidbody2D rigidbody = projectile.GetComponent<Rigidbody2D>();
 
         if (rigidbody != null)
@@ -80,7 +90,7 @@ public class ProjectimeSkill : BaseSkill
         ProjectileSkillBullet bullet = projectile.GetComponent<ProjectileSkillBullet>();
         if (bullet != null)
         {
-            bullet.Init(ispierce, enemyLayer);
+            bullet.Init(ispierce, enemyLayer, _damage);
         }
 
     }
@@ -109,6 +119,12 @@ public class ProjectimeSkill : BaseSkill
 
     }
 
+    private int GetCurrentProjectileCount()
+    {
+        allProCount = projectileCount + statHandler.GetProjectileCount();
+        return allProCount;
+    }
+
     public override void SkillLevelUp()
     {
         base.SkillLevelUp();
@@ -117,6 +133,7 @@ public class ProjectimeSkill : BaseSkill
             if (projectileSize <= 2)
             {
                 projectileSize = Mathf.Min(projectileSize + 0.02f, 2);
+                Debug.Log("투사체 사이즈 증가");
             }
             else
             {
@@ -128,25 +145,42 @@ public class ProjectimeSkill : BaseSkill
             if (cooldown >= 5)
             {
                 cooldown = Mathf.Max(cooldown - 0.05f, 5);
-
+                Debug.Log("투사체 쿨타임 감소");
             }
             else
             {
                 damage++;
             }
         }
+
         if (skillLevel % 3 == 0)
         {
-            if (projectileCount > 10)
+            if (projectileCount <= 10)
             {
-                AllproCount = Mathf.Min(AllproCount + 1, 11);
-
+                projectileCount = Mathf.Min(projectileCount + 1, 10);
+                Debug.Log("투사체 갯수 증가");
             }
             else
                 damage++;
         }
         damage++;
 
+        //SkillManagerReset();
+
+        //if (skillCoroutine != null)
+        //{
+        //    StopCoroutine(skillCoroutine);
+        //    skillCoroutine = null;
+        //}
+
+    }
+
+    public IEnumerator RestartCoroutine()
+    {
+        yield return new WaitForSeconds((int)(cooldown / 2));
+        StopCoroutine(skillCoroutine);
+        skillCoroutine = null;
+        UseSkill();
     }
 
 

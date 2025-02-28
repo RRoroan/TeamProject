@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -9,10 +10,8 @@ public class ProjectileSkillBullet : MonoBehaviour
     private Vector2 mapMinBounds;
     private Vector2 mapMaxBounds;
 
-    // 투사체 피해량 
-    [SerializeField] private float addDamage = 5f;
     // 총합 대미지(플레이어 공격력 + addDamage)
-    private float damage;
+    private float damage = 0;
     private LayerMask enemyLayer;
     private bool isPierce;
 
@@ -24,7 +23,6 @@ public class ProjectileSkillBullet : MonoBehaviour
         // 맵의 우상단 좌표
         mapMaxBounds = mapSize.GetMaxBounds();
 
-        damage = addDamage; // + player damage 추가
     }
 
     void Update()
@@ -37,10 +35,13 @@ public class ProjectileSkillBullet : MonoBehaviour
 
     }
 
-    public void Init(bool _isPierce, LayerMask enemy)
+    public void Init(bool _isPierce, LayerMask enemy, int _damage)
     {
         enemyLayer = enemy;
         isPierce = _isPierce;
+        damage = _damage;
+
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
