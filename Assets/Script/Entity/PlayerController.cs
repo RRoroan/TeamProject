@@ -8,6 +8,7 @@ public class PlayerController : BaseController
     private Camera _camera;
     private WeaponHandler currentWeapon;
     private GameManager gameManager;
+    private StageManager stageManager;
     public AudioClip moveSoundClip;
     public ResourceController resourceController;
 
@@ -95,11 +96,11 @@ public class PlayerController : BaseController
 
     public override void Death()
     {
-        base.Death();
-        if (resourceController.CurrentHealth <= 0f)
-        {
-            gameManager.GameOver();
-        }
+        StageManager.Instance.GameOver();
+        //if (resourceController.CurrentHealth <= 0f)
+        //{
+        //    gameManager.GameOver();
+        //}
 
     }
 }

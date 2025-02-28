@@ -22,8 +22,8 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]
     private Color gizmoColor = new Color(1, 0, 0, 0.3f); // 기즈모 색상
 
-    private List<EnemyController> activeEnemies = new List<EnemyController>(); // 현재 활성화된 적들
-    private EnemyController activeBoss = new EnemyController(); // 활성화된 보스
+    public List<EnemyController> activeEnemies = new List<EnemyController>(); // 현재 활성화된 적들
+    public EnemyController activeBoss = new EnemyController(); // 활성화된 보스
 
     private bool enemySpawnComplite;
 
@@ -31,6 +31,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private float timeBetweenWaves = 1f;
 
     GameManager gameManager;
+    StageManager stageManager;
  
 
     private void Start()
@@ -38,16 +39,16 @@ public class EnemyManager : MonoBehaviour
         //StartWave(4);
     }
 
-    public void Init(GameManager gameManager)
+    public void Init(StageManager stageManager)
     {
-        this.gameManager = gameManager;
+        this.stageManager = stageManager;
     }
 
     public void StartWave(int waveCount)
     {
         if (waveCount <= 0)
         {
-            gameManager.EndOfWave();
+            stageManager.EndOfWave();
             return;
         }
 
@@ -103,7 +104,7 @@ public class EnemyManager : MonoBehaviour
         // 적 생성 및 리스트에 추가
         GameObject spawnedEnemy = Instantiate(randomPrefab, new Vector3(randomPosition.x, randomPosition.y), Quaternion.identity);
         EnemyController enemyController = spawnedEnemy.GetComponent<EnemyController>();
-        enemyController.Init(this, gameManager.player.transform);
+        enemyController.Init(this, FindObjectOfType<PlayerController>().gameObject.transform);
 
         activeEnemies.Add(enemyController);
     }
@@ -116,7 +117,7 @@ public class EnemyManager : MonoBehaviour
         //보스 생성 및 변수에 추가
         GameObject spawnedBoss = Instantiate(bossPrefab, new Vector3(0, 2.5f), Quaternion.identity);
         EnemyController bossController = spawnedBoss.GetComponent<EnemyController>();
-        bossController.Init(this, gameManager.player.transform);
+        bossController.Init(this, FindObjectOfType<PlayerController>().gameObject.transform);
 
         activeBoss = bossController;
     }
@@ -127,7 +128,7 @@ public class EnemyManager : MonoBehaviour
         if (enemySpawnComplite && activeEnemies.Count == 0)
         {
             Debug.Log("다음 웨이브");
-            gameManager.EndOfWave();
+            stageManager.EndOfWave();
         }
 
     }
