@@ -26,6 +26,7 @@ public abstract class BaseSkill : MonoBehaviour
     protected Vector2 mapMinBounds;
     protected Vector2 mapMaxBounds;
 
+
     public void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
@@ -70,7 +71,17 @@ public abstract class BaseSkill : MonoBehaviour
 
     public virtual void SkillLevelUp()
     {
+        Debug.Log($"{gameObject.name}");
         skillLevel++;
     }
+
+    //protected void SkillManagerReset()
+    //{
+    //    SkillManager skillManager = FindObjectOfType<SkillManager>();
+    //    if (skillManager != null)
+    //    {
+    //        skillManager.RestartSkill(this);
+    //    }
+    //}
 
 }

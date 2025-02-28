@@ -9,6 +9,8 @@ public class SkillManager : MonoBehaviour
     public Transform player; // 플레이어의 Transform
     public List<SkillReward> availableSkills;
 
+
+
     private void Awake()
     {
 
@@ -18,22 +20,24 @@ public class SkillManager : MonoBehaviour
     {
         while (activeSkills.Contains(skill))
         {
-            if (skill == null)
+            BaseSkill nowSkill = activeSkills.Find(s => s.SkillName == skill.SkillName);
+            if (nowSkill == null)
             {
                 Debug.LogWarning("SkillRoutine : 스킬이 없습니다.");
                 yield break;
             }
 
-            StartCoroutine(DelaySkill(skill));
+            StartCoroutine(DelaySkill(nowSkill));
 
-            float cooldown = skill.GetCooldown();
+            float cooldown = nowSkill.GetCooldown();
             if (cooldown <= 0)
             {
                 Debug.LogError("SkillRoutine 스킬 쿨타임이 0초 이하입니다. 루틴을 종료합니다.");
                 yield break;
             }
 
-            yield return new WaitForSeconds(cooldown);
+            yield return new WaitForSeconds(nowSkill.GetCooldown());
+            if (nowSkill != null) nowSkill.UseSkill();
         }
     }
 
@@ -47,8 +51,10 @@ public class SkillManager : MonoBehaviour
     {
         if (HasSkill(skill))
         {
-            skill.SkillLevelUp(); // 이미 존재하는 경우 레벨 증가
-            Debug.Log($"{skill.SkillName} 스킬 레벨 업! 현재 레벨: {skill.skillLevel}");
+            BaseSkill nowSkill = activeSkills.Find(s => s.SkillName == skill.SkillName);
+            nowSkill.SkillLevelUp(); // 이미 존재하는 경우 레벨 증가
+            Debug.Log($"{nowSkill.SkillName} 스킬 레벨 업! 현재 레벨: {nowSkill.skillLevel}");
+            //RestartSkill(nowSkill);
             return;
         }
 
@@ -71,6 +77,36 @@ public class SkillManager : MonoBehaviour
         Debug.Log($"{newSkill.SkillName} 스킬이 활성화됨!");
     }
 
+
+    //public void RestartSkill(BaseSkill skill)
+    //{
+    //    BaseSkill exisitingSkill = activeSkills.Find(sk => sk.SkillName == skill.SkillName);
+
+    //    if (exisitingSkill == null) return;
+
+    //    if (skillCoroutines.ContainsKey(exisitingSkill))
+    //    {
+    //        Coroutine routine = skillCoroutines[exisitingSkill];
+    //        if (routine != null)
+    //        {
+
+
+    //            RemoveSkill(exisitingSkill);
+    //        }
+    //        skillCoroutines.Remove(exisitingSkill );
+    //    }
+
+    //    BaseSkill newSkill = Instantiate(skill, player); // 새 인스턴스 생성
+    //    activeSkills.Add(newSkill);
+
+    //    Coroutine skillRoutine = StartCoroutine(SkillRoutine(newSkill));
+    //    if (skillRoutine == null)
+    //    {
+    //        Debug.LogError($"{newSkill.SkillName} is not a skill");
+    //    }
+    //    skillCoroutines[newSkill] = skillRoutine;
+    //}
+
     
 
     public void ApplySkillReward(SkillReward skillReward)
@@ -90,6 +126,7 @@ public class SkillManager : MonoBehaviour
     {
         if (activeSkills.Contains(skill))
         {
+
             activeSkills.Remove(skill);
 
             if (skillCoroutines.ContainsKey(skill))

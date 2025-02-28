@@ -17,7 +17,7 @@ public class RotatingSkill : BaseSkill
     [SerializeField] private float lifetime = 3f;
 
     // 투사채 갯수
-    [SerializeField] private int projectileCount = 3;
+    [SerializeField] private int projectileCount = 1;
 
     // 적에게 피해를 입힐 간격
     [SerializeField] private float hitInterval = 0.5f;
@@ -30,10 +30,13 @@ public class RotatingSkill : BaseSkill
     private HashSet<Collider2D> hitEnemies = new HashSet<Collider2D>();
 
 
+
     protected override void Start()
     {
         base.Start();
+
         projectileCount += statHandler.GetProjectileCount();
+
     }
 
     public override void UseSkill()
