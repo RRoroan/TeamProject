@@ -43,10 +43,34 @@ public class RangeWeaponHandler : WeaponHandler
 
 
     private ProjectileManager projectileManager;
+
+    private float defaultSpeed;
+    private float defaultDamage;
+    private float defaultDelay;
+    private float defaultBulletIndex;
+    private int defaultMaxBounce;
+    private float defaultBulletSize;
+    private float defaultDuration;
+    private float defaultSpread;
+    private int defaultNumberoProjectilePerShot;
+    private float defaultMultipleProjectileAngle;
+    
+
     protected override void Start()
     {
         base.Start();
         projectileManager = ProjectileManager.Instance;
+
+        defaultSpeed = Speed;
+        defaultDamage = Damage;
+        defaultDelay = Delay;
+        defaultBulletIndex = BulletIndex;
+        defaultMaxBounce = MaxBounces;
+        defaultBulletSize = BulletSize;
+        defaultDuration = Duration;
+        defaultSpread = Spread;
+        defaultNumberoProjectilePerShot = NumberoProjectilesPerShot;
+        defaultMultipleProjectileAngle = MultipleProjectileAngel;
     }
 
     public override void Attack()
@@ -64,6 +88,9 @@ public class RangeWeaponHandler : WeaponHandler
             angle += randomSpread;
             CreateProjectile(Controller.LookDirection, angle);
         }
+
+        
+
     }
 
     private void CreateProjectile(Vector2 _lookDirection, float angle)
@@ -76,5 +103,22 @@ public class RangeWeaponHandler : WeaponHandler
     {
         return Quaternion.Euler(0, 0, degress) * v;
     }
+
+    private void ResetStat()
+    {
+        Speed = defaultSpeed;
+        Damage = defaultDamage;
+        Damage = defaultDamage;
+        Delay = defaultDelay;
+        //BulletIndex = defaultBulletIndex;
+        MaxBounces = defaultMaxBounce;
+        BulletSize = defaultBulletSize;
+        //Duration = defaultDuration;
+        //Spread = defaultSpeed;
+        NumberoProjectilesPerShot = defaultNumberoProjectilePerShot;
+        //MultipleProjectileAngel = defaultMultipleProjectileAngle;
+    }
+
+
 
 }
