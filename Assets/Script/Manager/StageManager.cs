@@ -11,6 +11,7 @@ public class StageManager : MonoBehaviour
     private EnemyManager enemyManager;
     private RewardManager rewardManager;
     private SkillManager skillManager;
+    private RangeWeaponHandler weaponHandler;
     public static bool isFirstLoading = true;
 
     [SerializeField] public static int currentWaveIndex = 0;
@@ -22,7 +23,7 @@ public class StageManager : MonoBehaviour
         mapSize = FindObjectOfType<MapSizeDetecte>();
 
         //statHandler = GetComponent<StatHandler>();
-
+        weaponHandler = FindObjectOfType<RangeWeaponHandler>();
         skillManager = FindObjectOfType<SkillManager>();
         rewardManager = GetComponentInChildren<RewardManager>();
         enemyManager = GetComponentInChildren<EnemyManager>();
@@ -96,6 +97,7 @@ public class StageManager : MonoBehaviour
         enemyManager.activeEnemies = null;
         enemyManager.activeBoss = null;
         skillManager.ResetSkill();
+        weaponHandler. ResetStat();
         SceneController.Instance.StartGame();
     }
 }

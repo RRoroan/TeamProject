@@ -104,7 +104,7 @@ public class RangeWeaponHandler : WeaponHandler
         return Quaternion.Euler(0, 0, degress) * v;
     }
 
-    private void ResetStat()
+    public void ResetStat()
     {
         Speed = defaultSpeed;
         Damage = defaultDamage;
