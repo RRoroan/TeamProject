@@ -1625,7 +1625,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statHandler: {fileID: 476842870}
-  currentWaveIndex: 0
 --- !u!4 &423864758
 Transform:
   m_ObjectHideFlags: 0
@@ -10199,7 +10198,7 @@ MonoBehaviour:
   - {fileID: 3652378525465268157, guid: c1a9332ad6a27d94bbb0571c663fdd5f, type: 3}
   - {fileID: 3652378525465268157, guid: 5d05b516c09d5b04da6e931a88516a86, type: 3}
   - {fileID: 3652378525465268157, guid: 79fce497de22762428daba870f6a82fd, type: 3}
-  bossPrefab: {fileID: 0}
+  bossPrefab: {fileID: 6401412441340689401, guid: 9661a993d4394f1499a8286734914431, type: 3}
   spawnAreas:
   - serializedVersion: 2
     x: -8
@@ -10209,6 +10208,7 @@ MonoBehaviour:
   gizmoColor: {r: 1, g: 0, b: 0, a: 0.3}
   timeBetweenSpawns: 0.2
   timeBetweenWaves: 1
+  bossroomCheck: 0
 --- !u!1 &1950575507
 GameObject:
   m_ObjectHideFlags: 0
