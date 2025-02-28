@@ -74,7 +74,7 @@ public class StageManager : MonoBehaviour
         }
         uIManager.UpWaveCount();
         Debug.Log($"Index : {currentWaveIndex}");
-        enemyManager.StartWave(1 + currentWaveIndex * 2);
+        enemyManager.StartWave(1 + currentWaveIndex*2);
         
 
     }
@@ -85,10 +85,7 @@ public class StageManager : MonoBehaviour
 
         if (currentWaveIndex < 5)
         {
-            
             rewardManager.ShowRewards();
-            
-
             StartNextWave();
         }
         else if (currentWaveIndex == 5)

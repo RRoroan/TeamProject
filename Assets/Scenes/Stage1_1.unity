@@ -134,7 +134,6 @@ GameObject:
   - component: {fileID: 4167318}
   - component: {fileID: 4167321}
   - component: {fileID: 4167320}
-  - component: {fileID: 4167319}
   - component: {fileID: 4167322}
   m_Layer: 5
   m_Name: BossWarning
@@ -165,25 +164,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 2000, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4167319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4167317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f95a853f8fd1fc74e9efa3ae079673e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waveCountText: {fileID: 0}
-  bossWarning: {fileID: 82206717}
-  bossWarningTop: {fileID: 1503502307}
-  bossWarningBottom: {fileID: 2092583746}
-  bossWarningBoard: {fileID: 4167320}
-  bossWarningObject: {fileID: 4167317}
-  waveCount: 0
 --- !u!114 &4167320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1719,6 +1699,7 @@ GameObject:
   - component: {fileID: 702777514}
   - component: {fileID: 702777513}
   - component: {fileID: 702777512}
+  - component: {fileID: 702777515}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1813,6 +1794,25 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &702777515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702777510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f95a853f8fd1fc74e9efa3ae079673e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveCountText: {fileID: 1295157568}
+  bossWarning: {fileID: 82206717}
+  bossWarningTop: {fileID: 1503502307}
+  bossWarningBottom: {fileID: 2092583746}
+  bossWarningBoard: {fileID: 4167320}
+  bossWarningObject: {fileID: 4167317}
+  waveCount: 0
 --- !u!1 &795181125
 GameObject:
   m_ObjectHideFlags: 0
