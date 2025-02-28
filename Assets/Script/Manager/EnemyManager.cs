@@ -69,7 +69,11 @@ public class EnemyManager : MonoBehaviour
     {
         enemySpawnComplite = false;
         yield return new WaitForSeconds(timeBetweenWaves);
-        
+
+        if (StageManager.currentWaveIndex == 5)
+        {
+            yield return new WaitForSeconds(4);
+        }
         for (int i = 0; i < waveCount; i++)
         {
             yield return new WaitForSeconds(timeBetweenSpawns);
