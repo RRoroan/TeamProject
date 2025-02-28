@@ -10,7 +10,6 @@ public class StageManager : MonoBehaviour
 
     private EnemyManager enemyManager;
     private RewardManager rewardManager;
-    private BaseSkill baseSkill;
     private SkillManager skillManager;
     public static bool isFirstLoading = true;
 
@@ -96,7 +95,7 @@ public class StageManager : MonoBehaviour
         enemyManager.StopWave();
         enemyManager.activeEnemies = null;
         enemyManager.activeBoss = null;
-        skillManager.RemoveSkill(baseSkill);
+        skillManager.ResetSkill();
         SceneController.Instance.StartGame();
     }
 }
