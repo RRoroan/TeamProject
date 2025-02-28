@@ -78,7 +78,7 @@ public class PlayerController : BaseController
             {
                 readytoAttack = false;
             }
-            lookDirection = directionToTarget;
+            lookDirection = directionToTarget.normalized * 10f;
         }
         else
         {
