@@ -140,6 +140,14 @@ public class SkillManager : MonoBehaviour
         }
     }
 
+    public void ResetSkill()
+    {
+        foreach (BaseSkill skill in activeSkills)
+        {
+            RemoveSkill(skill);
+        }
+    }
+
     public bool HasSkill(BaseSkill skill)
     {
         return activeSkills.Exists(s => s.SkillName == skill.SkillName);
